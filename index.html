@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/robotnik.js"></script>    
+    <script type="text/javascript" src="blockly/blockly_compressed.js"></script>
+    <script type="text/javascript" src="blockly/javascript_compressed.js"></script>
+    <script type="text/javascript" src="js/robotnik-generator.js"></script>
+    <script type="text/javascript" src="js/robotnik-blocks.js"></script>
+    <script type="text/javascript" src="blockly/msg/js/en.js"></script>
+    <style>
+      html, body {
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100%;
+      }
+      .blocklySvg {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <script>
+      function init() {
+        Blockly.inject(document.body, { 
+          path: './blockly/', 
+          toolbox: document.getElementById('toolbox'),
+          trashcan: true
+        });
+      }
+    </script>
+  </head>
+  <body onload="init()">
+    <xml id="toolbox" style="display: none">
+      <block type="led_on"></block>
+      <block type="led_off"></block>
+      <block type="blink_led"></block>
+    </xml>
+    <button id="execute">Execute</button>
+  </body>
+</html>
