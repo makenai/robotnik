@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/makenai/robotnik/issues"
   },
-  "homepage": "https://github.com/makenai/robotnik"
+  "homepage": "https://github.com/makenai/robotnik",
+  "dependencies": {
+    "johnny-five": "~0.7.17",
+    "express": "~3.4.8"
+  }
 }
