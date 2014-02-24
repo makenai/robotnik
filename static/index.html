@@ -21,6 +21,23 @@
         height: 100%;
         width: 100%;
       }
+      #logo {
+        width: 400px;
+        height: 100px;
+        text-indent: -9999px;
+        background: url(images/logo.png);
+        margin: 0;
+        padding: 0;
+      }
+      #controls {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+      }
+      #controls button {
+
+      }
     </style>
     <script>
       function init() {
@@ -33,12 +50,15 @@
     </script>
   </head>
   <body onload="init()">
+    <h1 id="logo">Robotnik</h1>
     <xml id="toolbox" style="display: none">
       <block type="led_on"></block>
       <block type="led_off"></block>
       <block type="blink_led"></block>
       <block type="while_button"></block>
     </xml>
-    <button id="execute">Execute</button>
+    <div id="controls">
+      <button id="execute">Execute</button>
+    </div>
   </body>
 </html>
