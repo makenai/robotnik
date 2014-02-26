@@ -9,36 +9,8 @@
     <script type="text/javascript" src="js/robotnik-generator.js"></script>
     <script type="text/javascript" src="js/robotnik-blocks.js"></script>
     <script type="text/javascript" src="blockly/msg/js/en.js"></script>
-    <style>
-      html, body {
-        background-color: #fff;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        height: 100%;
-      }
-      .blocklySvg {
-        height: 100%;
-        width: 100%;
-      }
-      #logo {
-        width: 400px;
-        height: 100px;
-        text-indent: -9999px;
-        background: url(images/logo.png);
-        margin: 0;
-        padding: 0;
-      }
-      #controls {
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 10px;
-      }
-      #controls button {
-
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/robotnik.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <script>
       function init() {
         Blockly.inject(document.body, { 
@@ -58,7 +30,7 @@
       <block type="while_button"></block>
     </xml>
     <div id="controls">
-      <button id="execute">Execute</button>
+      <button id="execute">Execute <i class="fa fa-youtube-play"></i></button>
     </div>
   </body>
 </html>
