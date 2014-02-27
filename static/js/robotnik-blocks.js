@@ -1,6 +1,5 @@
 Blockly.Blocks['led_on'] = {
-  // Numeric value.
-  init: function() {
+]  init: function() {
     this.setHelpUrl("http://google.com");
     this.setColour(120);
     this.appendDummyInput()
@@ -12,7 +11,6 @@ Blockly.Blocks['led_on'] = {
 };
 
 Blockly.Blocks['led_off'] = {
-  // Numeric value.
   init: function() {
     this.setHelpUrl("http://google.com");
     this.setColour(360);
@@ -25,7 +23,6 @@ Blockly.Blocks['led_off'] = {
 };
 
 Blockly.Blocks['blink_led'] = {
-  // Numeric value.
   init: function() {
     this.setHelpUrl("http://google.com");
     this.setColour(230);
@@ -41,7 +38,6 @@ Blockly.Blocks['blink_led'] = {
 };
 
 Blockly.Blocks['while_button'] = {
-  // Numeric value.
   init: function() {
     this.setHelpUrl("http://google.com");
     this.setColour(180);
