@@ -1,5 +1,5 @@
 Blockly.Blocks['led_on'] = {
-]  init: function() {
+  init: function() {
     this.setHelpUrl("http://google.com");
     this.setColour(120);
     this.appendDummyInput()
