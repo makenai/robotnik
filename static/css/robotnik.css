@@ -4,11 +4,17 @@ html, body {
   padding: 0;
   overflow: hidden;
   height: 100%;
+  font-family: sans-serif;
 }
 
 .blocklySvg {
   height: 100%;
   width: 100%;
+}
+
+#header {
+  position: relative;
+  height: 100px;
 }
 
 #logo {
@@ -43,4 +49,86 @@ html, body {
 #execute {
   color: white;
   background-color: #00a651;
+}
+
+#tabs {
+  position: absolute;
+  bottom: 0;
+  left: 400px;
+}
+
+/* Tabs */
+
+#tabs { 
+  margin: 0; 
+  padding: 0; 
+  bottom: 0;
+}
+#tabs li { 
+  display: inline-block; 
+  zoom:1; *display:inline; 
+  background: #eee; border: solid 1px #e2e2e2;
+  border-bottom: none; 
+  -moz-border-radius: 4px 4px 0 0; 
+  -webkit-border-radius: 4px 4px 0 0; 
+}
+#tabs a { 
+  width: 80px;
+  text-align: center;
+  font-size: 18px; 
+  line-height: 2em; 
+  display: block; 
+  padding: 0 10px; 
+  outline: none; 
+  text-decoration: none; 
+  color: black;
+}
+#tabs a:hover { 
+  color: red;
+}
+#tabs li.active { 
+  background: #fff; 
+  padding-top: 6px; 
+  position: relative; 
+  top: 1px; 
+  border-color: #e2e2e2; 
+}
+#tabs a.active { 
+  font-weight: bold; 
+}
+/*.tab-container .panel-container { background: #fff; border: solid #666 1px; padding: 10px; -moz-border-radius: 0 4px 4px 4px; -webkit-border-radius: 0 4px 4px 4px; }*/
+
+#tab-content div {
+  height: 100%;
+}
+
+#code {
+  display: none;
+  border-top: 1px solid #e2e2e2;
+}
+
+/* CodeMirror */
+
+.CodeMirror {
+  font-size: 18px;
+}
+.CodeMirror-lines {
+  padding: 10px 0;
+}
+.CodeMirror pre {
+  padding: 0 10px;
+}
+.CodeMirror-linenumber {
+  min-width: 50px;
+}
+
+#runningWindow {
+  display: none;
+  width: 500px;
+  height: 300px;
+  border: 1px solid black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
 }
