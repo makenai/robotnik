@@ -33,13 +33,20 @@ html, body {
   padding: 10px;
 }
 
-#controls button {
+#controls button,  #controls a {
   font-size: 20px;
   padding: 10px;
   border: 1px solid black;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
+}
+
+#docs {
+  color: black;
+  background-color: yellow;
+  text-decoration: none;
+
 }
 
 #controls button:hover {
@@ -127,6 +134,8 @@ html, body {
   -moz-border-radius: 20px;
   border-radius: 20px;
 }
+
+#docs { display: none; }
 
 #runningWindow h1 {
   color: white;

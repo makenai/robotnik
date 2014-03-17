@@ -1,9 +1,9 @@
 Blockly.JavaScript['led_on'] = function(block) {
-  return 'led.on();';
+  return "led.on();\n";
 }
 
 Blockly.JavaScript['led_off'] = function(block) {
-  return 'led.off();';
+  return "led.off();\n";
 }
 
 Blockly.JavaScript['while_button'] = function(block) {
@@ -25,7 +25,7 @@ Blockly.JavaScript['while_button'] = function(block) {
 Blockly.JavaScript['motor_on'] = function(block) {
   var motor = block.getFieldValue('MOTOR'),
     direction = block.getFieldValue('DIRECTION');
-  return motor + '.' + direction + '()';
+  return motor + '.' + direction + "();\n";
 }
 
 Blockly.JavaScript['if_distance'] = function(block) {

@@ -56,8 +56,14 @@ $( document ).ready(function() {
 
   $('#execute').on('click', function(e) {
     e.preventDefault();
-    RunningWindow.show();
-    socket.emit( 'code', generateCode() );
+    setTimeout(function() {
+      RunningWindow.show();  
+    }, 1000);
+    if ( $('#code-tab').parent().is('.active') ) {
+      socket.emit( 'code', editor.getValue() );
+    } else {
+      socket.emit( 'code', generateCode() );
+    }
   });
 
   // Bad things happened
@@ -157,6 +163,7 @@ $( document ).ready(function() {
     
     $('#code').hide();
     $('#blockly').show();
+    $('#docs').hide();
   });
 
   $('#code-tab').click(function(e) {
@@ -167,6 +174,7 @@ $( document ).ready(function() {
 
     $('#code').show();
     $('#blockly').hide();
+    $('#docs').show();
     editor.setValue( generateCode() );
     editor.gotoLine(1);
     

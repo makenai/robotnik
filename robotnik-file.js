@@ -9,8 +9,5 @@ var led = new five.Led(13),
 	sensor = new five.Sensor('A0')
 
 led.on();
-button.on('red', function() {
-  led.off();
-})
 
 })

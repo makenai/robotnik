@@ -1,7 +1,7 @@
 {
   "name": "robotnik",
-  "version": "0.0.0",
-  "description": "This is a placeholder for the robotnik library. Look forward to learning more at Makerland!",
+  "version": "0.1.0",
+  "description": "Robotnik is a visual programming library for my workshop at Makerland!",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
