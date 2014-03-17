@@ -35,7 +35,8 @@ $( document ).ready(function() {
   RunningWindow.init();
 
   var preCode = [ 'var five = require("johnny-five"),',
-    '\tboard = new five.Board()',
+    '\tboard = new five.Board(),',
+    "\tbutton = require('./lib/buttons')",
     '',
     'board.on("ready", function() {',
     "var led = new five.Led(13),", 
@@ -46,17 +47,6 @@ $( document ).ready(function() {
     '' ];
 
   var postCode = [ '', '})' ];
-
-  // var preCode = [
-  //   "var replify = require('replify')", 
-  //   "console.log('listening')", 
-  //   "replify('realtime-101', 1)",
-  //   "process.on('message', function(m) {",
-  //   "\tconsole.log('CHILD got message:', m);",
-  //   "});"
-  // ];
-  // var postCode = [''];
-
 
   var socket = io.connect('http://localhost');
 
@@ -151,7 +141,6 @@ $( document ).ready(function() {
     }
 
   });
-
 
   // Keep the tabs sized to the window minus the header
   $( window ).resize(function() {

@@ -8,20 +8,30 @@ Blockly.Blocks['led_on'] = {
   }
 };
 
+Blockly.Blocks['led_off'] = {
+  init: function() {
+    this.setColour(30);
+    this.appendDummyInput()
+        .appendField('turn LED off');
+    this.setNextStatement(true);
+    this.setPreviousStatement(true);    
+  }
+};
+
 Blockly.Blocks['motor_on'] = {
   init: function() {
     this.setColour(0);
     this.appendDummyInput()
-        .appendField('turn')
+        .appendField('the')
         .appendField(new Blockly.FieldDropdown([
           ['left', 'left'],
           ['right', 'right']
         ]), 'MOTOR')
         .appendField('motor')
         .appendField(new Blockly.FieldDropdown([
-          ['clockwise', 'cw'],
-          ['counter-clockwise', 'ccw'],
-          ['stop', 'stop']
+          ['goes clockwise', 'cw'],
+          ['goes counter-clockwise', 'ccw'],
+          ['stops', 'stop']
         ]), 'DIRECTION');
     this.setNextStatement(true);
     this.setPreviousStatement(true);
@@ -43,6 +53,9 @@ Blockly.Blocks['while_button'] = {
         ]), 'BUTTON')
         .appendField('button is pressed');
     this.appendStatementInput('DO');
+    this.appendDummyInput()
+      .appendField('otherwise');
+    this.appendStatementInput('OTHERWISE');
   }
 };
 
@@ -54,6 +67,9 @@ Blockly.Blocks['if_distance'] = {
         .appendField(new Blockly.FieldTextInput('15'), 'DISTANCE')
         .appendField('cm away');
     this.appendStatementInput('DO');
+    this.appendDummyInput()
+      .appendField('otherwise');
+    this.appendStatementInput('OTHERWISE');
   }
 };
 

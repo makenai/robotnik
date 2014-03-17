@@ -112,6 +112,7 @@ html, body {
 }
 
 #runningWindow {
+  z-index: 10001;
   display: none;
   width: 500px;
   height: 260px;

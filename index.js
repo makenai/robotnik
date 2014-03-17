@@ -39,7 +39,6 @@ var CodeRunner = {
   send: function(message) {
     if ( this.child )
       this.child.send(message)
-    console.log( 'cat: ' + message )
   }
 
 }
@@ -53,7 +52,6 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on('control', function (control) {
-    console.log( control );
     CodeRunner.send( control );
     if ( control == 'stop' ) {
       CodeRunner.kill()
