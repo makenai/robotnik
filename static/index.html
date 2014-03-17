@@ -4,15 +4,14 @@
     <meta charset="utf-8">
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="js/RetroJoyStick.js"></script>    
+    <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="js/robotnik.js"></script>
     <script type="text/javascript" src="blockly/blockly_compressed.js"></script>
     <script type="text/javascript" src="blockly/javascript_compressed.js"></script>
     <script type="text/javascript" src="js/robotnik-generator.js"></script>
     <script type="text/javascript" src="js/robotnik-blocks.js"></script>
-    <script type="text/javascript" src="js/codemirror.js"></script>
-    <script src="js/mode/javascript/javascript.js"></script>
+    <script type="text/javascript" src="js/ace/ace.js"></script>
     <script type="text/javascript" src="blockly/msg/js/en.js"></script>
-    <link rel="stylesheet" href="css/codemirror.css">
     <link rel="stylesheet" type="text/css" href="css/retro-joystick.css">
     <link rel="stylesheet" type="text/css" href="css/robotnik.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -33,13 +32,17 @@
       <div id="code"></div>
     </div>
     <div id="runningWindow">
-      <div id="debugOutput"></div>
+      <h1>NOW RUNNING&hellip; <img src="images/running.gif"></h1>
+      
+      <a href="#" id="stop">STOP</a>
+      <a href="#" id="red">RED</a>
+      <a href="#" id="green">GREEN</a>
     </div>
     <xml id="toolbox" style="display: none">
-      <block type="led_on"></block>
-      <block type="led_off"></block>
-      <block type="blink_led"></block>
       <block type="while_button"></block>
+      <block type="led_on"></block>
+      <block type="motor_on"></block>
+      <block type="if_distance"></block>
     </xml>
   </body>
 </html>

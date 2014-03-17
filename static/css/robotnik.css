@@ -107,28 +107,72 @@ html, body {
   border-top: 1px solid #e2e2e2;
 }
 
-/* CodeMirror */
-
-.CodeMirror {
+#code {
   font-size: 18px;
-}
-.CodeMirror-lines {
-  padding: 10px 0;
-}
-.CodeMirror pre {
-  padding: 0 10px;
-}
-.CodeMirror-linenumber {
-  min-width: 50px;
 }
 
 #runningWindow {
   display: none;
   width: 500px;
-  height: 300px;
-  border: 1px solid black;
+  height: 260px;
+  border: 2px solid black;
   position: absolute;
   top: 0;
   left: 0;
-  background: white;
+  background: url('../images/wood.png');
+  text-align: center;
+  font-weight: bold;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+#runningWindow h1 {
+  color: white;
+  margin-top: 10px;
+}
+
+#running-image {
+  width: 64px;
+  display: block;
+  margin: auto;
+}
+
+#stop {
+  display: block;
+  text-indent: -9999px;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: url(../images/stop.png);
+}
+
+#retrostick-1 {
+  position: absolute;
+  top: 75px;
+  left: 60px;
+}
+
+#red {
+  display: block;
+  text-indent: -9999px;
+  width: 60px;
+  height: 60px;
+  background: url(../images/red.png);
+  position: absolute;
+  top: 110px;
+  right: 140px;
+}
+
+#green {
+  display: block;
+  text-indent: -9999px;
+  width: 60px;
+  height: 60px;
+  background: url(../images/green.png);
+  position: absolute;
+  top: 130px;
+  right: 60px;
 }

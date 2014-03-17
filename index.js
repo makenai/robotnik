@@ -1,7 +1,63 @@
 var express = require('express')
   , app = express()
+  , server = require('http').createServer(app)
+  , io = require('socket.io').listen(server)
+  , fs = require('fs')
+  , childProcess = require("child_process")
 
 app.use(express.static(__dirname + '/static'))
 
-app.listen(8000)
+server.listen(8000)
 console.log('Listening on port 8000')
+
+
+var CodeRunner = {
+
+  // Run the specified code
+  run: function( code, handleError ) {
+    var filename = __dirname + '/robotnik-file.js',
+      codeRunner = this
+    fs.writeFile( filename, code, function(err) {
+      if (!err) {
+        codeRunner.child = childProcess.fork( filename )
+        codeRunner.child.on('exit', function(code, signal) {
+          // 8 = horrible error
+          if ( code == 8 )
+            handleError()
+        })
+      }
+    })
+  },
+
+  // Kill the process
+  kill: function() {
+    if ( this.child )
+      this.child.kill()
+  },
+
+  // Send a message
+  send: function(message) {
+    if ( this.child )
+      this.child.send(message)
+    console.log( 'cat: ' + message )
+  }
+
+}
+
+io.sockets.on('connection', function (socket) {
+
+  socket.on('code', function(code) {
+    CodeRunner.run( code, function() {
+      socket.emit('error', 'Program closed unexpectedly')
+    })
+  });
+
+  socket.on('control', function (control) {
+    console.log( control );
+    CodeRunner.send( control );
+    if ( control == 'stop' ) {
+      CodeRunner.kill()
+    }
+  })
+
+})

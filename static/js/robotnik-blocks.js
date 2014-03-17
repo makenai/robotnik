@@ -1,53 +1,59 @@
 Blockly.Blocks['led_on'] = {
   init: function() {
-    this.setHelpUrl("http://google.com");
     this.setColour(120);
     this.appendDummyInput()
         .appendField('turn LED on');
-    this.setTooltip("Turn the LED on");
     this.setNextStatement(true);
     this.setPreviousStatement(true);    
   }
 };
 
-Blockly.Blocks['led_off'] = {
+Blockly.Blocks['motor_on'] = {
   init: function() {
-    this.setHelpUrl("http://google.com");
-    this.setColour(360);
+    this.setColour(0);
     this.appendDummyInput()
-        .appendField('turn LED off');
-    this.setTooltip("Turn the LED off");
+        .appendField('turn')
+        .appendField(new Blockly.FieldDropdown([
+          ['left', 'left'],
+          ['right', 'right']
+        ]), 'MOTOR')
+        .appendField('motor')
+        .appendField(new Blockly.FieldDropdown([
+          ['clockwise', 'cw'],
+          ['counter-clockwise', 'ccw'],
+          ['stop', 'stop']
+        ]), 'DIRECTION');
     this.setNextStatement(true);
     this.setPreviousStatement(true);
   }
 };
 
-Blockly.Blocks['blink_led'] = {
-  init: function() {
-    this.setHelpUrl("http://google.com");
-    this.setColour(230);
-    this.appendDummyInput()
-        .appendField('Blink LED for')
-        .appendField(new Blockly.FieldTextInput('500', Blockly.FieldTextInput.numberValidator), 'NUM')
-        .appendField('ms every')
-        .appendField(new Blockly.FieldTextInput('100', Blockly.FieldTextInput.numberValidator), 'NUM')
-        .appendField('ms.');
-    this.setOutput(true, 'Number');
-    this.setTooltip("Blink a LED on and off for a specified amount of time");
-  }
-};
-
 Blockly.Blocks['while_button'] = {
   init: function() {
-    this.setHelpUrl("http://google.com");
     this.setColour(180);
     this.appendDummyInput()
         .appendField('while')
-        .appendField(new Blockly.FieldDropdown([['red', 'RED'], ['blue', 'BLUE']]))
+        .appendField(new Blockly.FieldDropdown([
+          ['red', 'red'], 
+          ['green', 'green'], 
+          ['up', 'up'], 
+          ['down', 'down'], 
+          ['left', 'left'], 
+          ['right', 'right']
+        ]), 'BUTTON')
         .appendField('button is pressed');
-    this.appendStatementInput('DO')
-      .appendField('do');
-    this.setOutput(true, 'Number');
-    this.setTooltip("Turn the LED off");
+    this.appendStatementInput('DO');
   }
 };
+
+Blockly.Blocks['if_distance'] = {
+  init: function() {
+    this.setColour(280);
+    this.appendDummyInput()
+        .appendField('when')
+        .appendField(new Blockly.FieldTextInput('15'), 'DISTANCE')
+        .appendField('cm away');
+    this.appendStatementInput('DO');
+  }
+};
+
