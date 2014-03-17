@@ -62,8 +62,8 @@ $( document ).ready(function() {
 
   // Bad things happened
   socket.on( 'error', function() {
-    // RunningWindow.close();
-    // alert('The program closed unexpectedly. Please check the arduino is plugged in and your program.');
+    RunningWindow.close();
+    alert('The program closed unexpectedly. Please check the arduino is plugged in and your program.');
   })
 
   // Run window controls
@@ -75,19 +75,19 @@ $( document ).ready(function() {
   });
 
   $('#red').on('mousedown', function(e) {
-    e.preventDefault();
     socket.emit( 'control', 'red_down' );
   }).on('mouseup', function(e) {
-    e.preventDefault();
     socket.emit( 'control', 'red_up' );
+  }).on('click', function(e) {
+    e.preventDefault();
   });
 
   $('#green').on('mousedown', function(e) {
-    e.preventDefault();
     socket.emit( 'control', 'green_down' );
   }).on('mouseup', function(e) {
-    e.preventDefault();
     socket.emit( 'control', 'green_up' );
+  }).on('click', function(e) {
+    e.preventDefault();
   });
 
   // Joystick controls!

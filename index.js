@@ -7,8 +7,8 @@ var express = require('express')
 
 app.use(express.static(__dirname + '/static'))
 
-server.listen(8000)
-console.log('Listening on port 8000')
+server.listen(8057)
+console.log('Please connect to http://localhost:8057/')
 
 
 var CodeRunner = {
