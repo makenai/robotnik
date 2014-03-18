@@ -22,6 +22,16 @@ var RunningWindow = {
 
 $( document ).ready(function() {
 
+  // HTTP based sockets replacement that will probably work
+  function sendMessage( channel, message ) {
+    $.post('/message', {
+      channel: channel,
+      message: message
+    }, function(data,status,xr) {
+      console.log( data );
+    });
+  }
+
   // Initialize Blockly
   Blockly.inject(document.getElementById('blockly'), { 
     path: './blockly/', 
@@ -48,8 +58,6 @@ $( document ).ready(function() {
 
   var postCode = [ '', '})' ];
 
-  var socket = io.connect('http://localhost');
-
   function generateCode() {
     return preCode.join("\n") + Blockly.JavaScript.workspaceToCode() + postCode.join("\n")
   }
@@ -60,38 +68,38 @@ $( document ).ready(function() {
       RunningWindow.show();  
     }, 1000);
     if ( $('#code-tab').parent().is('.active') ) {
-      socket.emit( 'code', editor.getValue() );
+      sendMessage( 'code', editor.getValue() );
     } else {
-      socket.emit( 'code', generateCode() );
+      sendMessage( 'code', generateCode() );
     }
   });
 
   // Bad things happened
-  socket.on( 'error', function() {
-    RunningWindow.close();
-    alert('The program closed unexpectedly. Please check the arduino is plugged in and your program.');
-  })
+  // socket.on( 'error', function() {
+  //   RunningWindow.close();
+  //   alert('The program closed unexpectedly. Please check the arduino is plugged in and your program.');
+  // })
 
   // Run window controls
 
   $('#stop').on('click', function(e) {
     e.preventDefault();
     RunningWindow.close();
-    socket.emit( 'control', 'stop' );
+    sendMessage( 'control', 'stop' );
   });
 
   $('#red').on('mousedown', function(e) {
-    socket.emit( 'control', 'red_down' );
+    sendMessage( 'control', 'red_down' );
   }).on('mouseup', function(e) {
-    socket.emit( 'control', 'red_up' );
+    sendMessage( 'control', 'red_up' );
   }).on('click', function(e) {
     e.preventDefault();
   });
 
   $('#green').on('mousedown', function(e) {
-    socket.emit( 'control', 'green_down' );
+    sendMessage( 'control', 'green_down' );
   }).on('mouseup', function(e) {
-    socket.emit( 'control', 'green_up' );
+    sendMessage( 'control', 'green_up' );
   }).on('click', function(e) {
     e.preventDefault();
   });
@@ -107,41 +115,41 @@ $( document ).ready(function() {
   RunningWindow.joystick.on('change', function(e) {
 
     if ( this.distance > 40 && this.angle > 40 && this.angle < 140 ) {
-      socket.emit( 'control', 'right_down' );
+      sendMessage( 'control', 'right_down' );
       past_directions.right = true;
     } else {
       if ( past_directions.right ) {
-        socket.emit( 'control', 'right_up' );
+        sendMessage( 'control', 'right_up' );
         past_directions.right = false;
       }
     }
 
     if ( this.distance > 40 && this.angle < 320 && this.angle > 240 ) {
-      socket.emit( 'control', 'left_down' );
+      sendMessage( 'control', 'left_down' );
       past_directions.left = true;
     } else {
       if ( past_directions.left ) {
-        socket.emit( 'control', 'left_up' );
+        sendMessage( 'control', 'left_up' );
         past_directions.left = false;
       }
     }
 
     if ( this.distance > 40 && ( this.angle < 40 || this.angle > 320 ) ) {
-      socket.emit( 'control', 'up_down' );
+      sendMessage('control', 'up_down');
       past_directions.up = true;
     } else {
       if ( past_directions.up ) {
-        socket.emit( 'control', 'up_up' );
+        sendMessage( 'control', 'up_up' );
         past_directions.up = false;
       }
     }
 
     if ( this.distance > 40 && this.angle > 120 && this.angle < 240 ) {
-      socket.emit( 'control', 'down_down' );
+      sendMessage( 'control', 'down_down' );
       past_directions.down = true;
     } else {
       if ( past_directions.down ) {
-        socket.emit( 'control', 'down_up' );
+        sendMessage( 'control', 'down_up' );
         past_directions.down = false;
       }
     }

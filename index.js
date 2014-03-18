@@ -3,11 +3,11 @@
 var express = require('express')
   , app = express()
   , server = require('http').createServer(app)
-  , io = require('socket.io').listen(server)
   , fs = require('fs')
   , childProcess = require("child_process")
 
 app.use(express.static(__dirname + '/static'))
+app.use(express.urlencoded())
 
 server.listen(8057)
 console.log('Please connect to http://localhost:8057/')
@@ -41,23 +41,31 @@ var CodeRunner = {
   send: function(message) {
     if ( this.child )
       this.child.send(message)
+  },
+
+  is_alive: function() {
+
   }
 
 }
 
-io.sockets.on('connection', function (socket) {
+app.post('/message', function(req,res) {
+  var message = req.body.message,
+    channel = req.body.channel
 
-  socket.on('code', function(code) {
-    CodeRunner.run( code, function() {
-      socket.emit('error', 'Program closed unexpectedly')
-    })
-  });
+  console.log( '/' + channel + '/ ' + message )
 
-  socket.on('control', function (control) {
-    CodeRunner.send( control );
-    if ( control == 'stop' ) {
+  if ( channel == 'code' ) {
+    CodeRunner.run( message, function() {
+      res.send('Program closed unexpectedly')
+    })    
+  }
+
+  if ( channel == 'control' ) {
+    CodeRunner.send( message );
+    if ( message == 'stop' ) {
       CodeRunner.kill()
     }
-  })
-
+  }
+  res.send('OK');
 })

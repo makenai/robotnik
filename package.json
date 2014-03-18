@@ -22,7 +22,6 @@
   "dependencies": {
     "johnny-five": "~0.7.17",
     "express": "~3.4.8",
-    "socket.io": "~0.9.16",
     "temp": "~0.7.0"
   }
 }
