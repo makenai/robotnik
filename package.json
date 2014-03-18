@@ -1,6 +1,6 @@
 {
   "name": "robotnik",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Robotnik is a visual programming library for my workshop at Makerland!",
   "main": "index.js",
   "scripts": {
