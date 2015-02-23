@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "gulp && bower install",
+    "postinstall": "bower install && gulp",
     "start": "node index.js"
   },
   "bin": {
