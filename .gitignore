@@ -1,1 +1,5 @@
+npm-debug.log
 node_modules
+static/vendor/
+static/js/bundle.js
+static/fonts

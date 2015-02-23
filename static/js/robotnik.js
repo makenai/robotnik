@@ -1,3 +1,5 @@
+'use strict';
+
 var RunningWindow = {
   show: function() {
     this.center();
@@ -7,13 +9,13 @@ var RunningWindow = {
     $('#runningWindow').css({
       top: ( $(window).height() / 2 ) - ( $('#runningWindow').height() / 2 ),
       left: ( $(window).width() / 2 ) - ( $('#runningWindow').width() / 2 )
-    })
+    });
   },
   close: function() {
     $('#runningWindow').hide()
   },
   init: function() {
-    this.joystick = new RetroJoyStick({ 
+    this.joystick = new RetroJoyStick({
       container: document.getElementById('runningWindow'),
       position: 'custom'
     })
@@ -33,8 +35,8 @@ $( document ).ready(function() {
   }
 
   // Initialize Blockly
-  Blockly.inject(document.getElementById('blockly'), { 
-    path: './blockly/', 
+  Blockly.inject(document.getElementById('blockly'), {
+    path: './js/vendor/blockly/',
     toolbox: document.getElementById('toolbox'),
     trashcan: true
   });
@@ -49,7 +51,7 @@ $( document ).ready(function() {
     "\tbutton = require('./lib/buttons')",
     '',
     'board.on("ready", function() {',
-    "var led = new five.Led(13),", 
+    "var led = new five.Led(13),",
     "\tleft = new five.Servo({ pin:  7, type: 'continuous' }).stop(),",
     "\tright = new five.Servo({ pin: 11, type: 'continuous' }).stop(),",
     "\tsensor = new five.Sensor('A0')",
@@ -65,7 +67,7 @@ $( document ).ready(function() {
   $('#execute').on('click', function(e) {
     e.preventDefault();
     setTimeout(function() {
-      RunningWindow.show();  
+      RunningWindow.show();
     }, 1000);
     if ( $('#code-tab').parent().is('.active') ) {
       sendMessage( 'code', editor.getValue() );
@@ -168,7 +170,7 @@ $( document ).ready(function() {
 
     $('#tabs li').removeClass('active');
     $(this).parent().addClass('active');
-    
+
     $('#code').hide();
     $('#blockly').show();
     $('#docs').hide();
@@ -185,7 +187,7 @@ $( document ).ready(function() {
     $('#docs').show();
     editor.setValue( generateCode() );
     editor.gotoLine(1);
-    
+
   });
 
 
