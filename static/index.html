@@ -2,19 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="js/RetroJoyStick.js"></script>    
-    <script src="/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="js/robotnik.js"></script>
-    <script type="text/javascript" src="blockly/blockly_compressed.js"></script>
-    <script type="text/javascript" src="blockly/javascript_compressed.js"></script>
-    <script type="text/javascript" src="js/robotnik-generator.js"></script>
-    <script type="text/javascript" src="js/robotnik-blocks.js"></script>
-    <script type="text/javascript" src="js/ace/ace.js"></script>
-    <script type="text/javascript" src="blockly/msg/js/en.js"></script>
     <link rel="stylesheet" type="text/css" href="css/retro-joystick.css">
     <link rel="stylesheet" type="text/css" href="css/robotnik.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/js/bower_components/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/js/bower_components/bootstrap/dist/css/bootstrap.min.css">
   </head>
   <body>
     <div id="header">
@@ -26,7 +17,7 @@
       <ul id="tabs">
         <li class="active"><a href="#" id="blocks-tab">Blocks</a></li>
         <li><a href="#" id="code-tab">Code</a></li>
-      </ul>      
+      </ul>
     </div>
     <div id="tab-content">
       <div id="blockly"></div>
@@ -34,7 +25,7 @@
     </div>
     <div id="runningWindow">
       <h1>NOW RUNNING&hellip; <img src="images/running.gif"></h1>
-      
+
       <a href="#" id="stop">STOP</a>
       <a href="#" id="red">RED</a>
       <a href="#" id="green">GREEN</a>
@@ -46,5 +37,17 @@
       <block type="motor_on"></block>
       <block type="if_distance"></block>
     </xml>
+    <script type="text/javascript" src="static/js/bower_components/dist/jquery.js"></script>
+    <script type="text/javascript" src="static/js/blockly-bq/blockly_compressed.js"></script>
+    <script type="text/javascript" src="static/js/blockly-bq/javascript_compressed.js"></script>
+    <script type="text/javascript" src="static/js/bower_components/blockly-bq/msg/js/en.js"></script>
+    <script type="text/javascript" src="js/RetroJoyStick.js"></script>
+    <script type="text/javascript" src="js/robotnik.js"></script>
+    <script type="text/javascript" src="js/robotnik-generator.js"></script>
+    <script type="text/javascript" src="js/robotnik-blocks.js"></script>
+    <!--
+      TODO: Move ace to bower
+    -->
+    <script type="text/javascript" src="js/ace/ace.js"></script>
   </body>
 </html>

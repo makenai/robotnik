@@ -1,0 +1,25 @@
+{
+  "name": "robotnik",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/makenai/robotnik",
+  "authors": [
+    "Pawel Szymczykowski"
+  ],
+  "description": "Robotnik is a visual programming library for Johnny-Five",
+  "license": "ISC",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3",
+    "bootstrap": "~3.3.2",
+    "font-awesome": "~4.3.0",
+    "blockly-bq": "~0.1.9"
+  }
+}
