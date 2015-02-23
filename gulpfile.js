@@ -28,7 +28,7 @@ gulp.task('staticlibs', function () {
   return gulp.src([
       './node_modules/blockly/**',
     ])
-    .pipe(gulp.dest('static/js/vendor/blockly'))
+    .pipe(gulp.dest('./static/vendor/blockly'))
     .on('error', console.log);
 });
 
