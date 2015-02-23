@@ -2,3 +2,4 @@ node_modules
 static/js/bower_components/
 static/js/npm-debug.log
 static/js/bundle.js
+static/fonts

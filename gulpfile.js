@@ -7,7 +7,7 @@ var uglify = require('gulp-uglify');
 
 var bundler = browserify({
   entries: [
-    './js/robotnik.js'
+    './static/js/robotnik.js'
   ],
   debug: true,
   cache: { },

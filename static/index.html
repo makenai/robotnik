@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/retro-joystick.css">
     <link rel="stylesheet" type="text/css" href="css/robotnik.css">
-    <link rel="stylesheet" href="static/js/bower_components/css/font-awesome.min.css">
-    <link rel="stylesheet" href="static/js/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./js/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./js/bower_components/bootstrap/dist/css/bootstrap.min.css">
   </head>
   <body>
     <div id="header">
@@ -37,12 +37,16 @@
       <block type="motor_on"></block>
       <block type="if_distance"></block>
     </xml>
-    <script type="text/javascript" src="static/js/bower_components/dist/jquery.js"></script>
-    <script type="text/javascript" src="static/js/blockly-bq/blockly_compressed.js"></script>
-    <script type="text/javascript" src="static/js/blockly-bq/javascript_compressed.js"></script>
-    <script type="text/javascript" src="static/js/bower_components/blockly-bq/msg/js/en.js"></script>
+    <script type="text/javascript" src="./js/bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="./js/bower_components/blockly-bq/blockly_compressed.js"></script>
+    <script type="text/javascript" src="./js/bower_components/blockly-bq/blocks_compressed.js"></script>
+    <script type="text/javascript" src="./js/bower_components/blockly-bq/javascript_compressed.js"></script>
+    <script type="text/javascript" src="./js/bower_components/blockly-bq/msg/js/en.js"></script>
     <script type="text/javascript" src="js/RetroJoyStick.js"></script>
-    <script type="text/javascript" src="js/robotnik.js"></script>
+    <!--
+      This is the browserify bundle, which just includes robotnik.js for now.
+    -->
+    <script type="text/javascript" src="./js/bundle.js"></script>
     <script type="text/javascript" src="js/robotnik-generator.js"></script>
     <script type="text/javascript" src="js/robotnik-blocks.js"></script>
     <!--
