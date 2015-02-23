@@ -1,5 +1,5 @@
 node_modules
-static/js/bower_components/
+static/js/vendor/
 static/js/npm-debug.log
 static/js/bundle.js
 static/fonts

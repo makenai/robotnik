@@ -24,6 +24,14 @@ gulp.task('icons', function () {
     .on('error', console.log);
 });
 
+gulp.task('staticlibs', function () {
+  return gulp.src([
+      './node_modules/blockly/**',
+    ])
+    .pipe(gulp.dest('static/js/vendor/blockly'))
+    .on('error', console.log);
+});
+
 gulp.task('bundle', function() {
   return bundler
     .bundle()
@@ -33,4 +41,4 @@ gulp.task('bundle', function() {
     .pipe(gulp.dest('./static/js'));
 });
 
-gulp.task('default', ['icons', 'bundle']);
+gulp.task('default', ['icons', 'staticlibs', 'bundle']);
