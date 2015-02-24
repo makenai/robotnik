@@ -36,7 +36,7 @@ $( document ).ready(function() {
 
   // Initialize Blockly
   Blockly.inject(document.getElementById('blockly'), {
-    path: './js/vendor/blockly/',
+    path: './vendor/blockly/',
     toolbox: document.getElementById('toolbox'),
     trashcan: true
   });
