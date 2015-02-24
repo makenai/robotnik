@@ -17,8 +17,8 @@ var bundler = browserify({
 
 gulp.task('icons', function () {
   return gulp.src([
-      './static/js/bower_components/font-awesome/fonts/**.*',
-      './static/js/bower_components/bootstrap/fonts/**.*'
+      './static/vendor/font-awesome/fonts/**.*',
+      './static/vendor/bootstrap/fonts/**.*'
     ])
     .pipe(gulp.dest('static/fonts'))
     .on('error', console.log);
