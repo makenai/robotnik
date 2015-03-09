@@ -1,7 +1,7 @@
 'use strict';
 
-var robotnikBlocks = require('./robotnik-blocks.js');
-var robotnikGenerator = require('./robotnik-generator.js');
+import robotnikBlocks from './robotnik-blocks.js';
+import robotnikGenerator from './robotnik-generator.js';
 
 var RunningWindow = {
   show: function() {
