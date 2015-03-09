@@ -1,5 +1,8 @@
 'use strict';
 
+import robotnikBlocks from './robotnik-blocks.js';
+import robotnikGenerator from './robotnik-generator.js';
+
 var RunningWindow = {
   show: function() {
     this.center();
@@ -23,6 +26,9 @@ var RunningWindow = {
 };
 
 $( document ).ready(function() {
+
+  robotnikGenerator.init();
+  robotnikBlocks.init();
 
   // HTTP based sockets replacement that will probably work
   function sendMessage( channel, message ) {
