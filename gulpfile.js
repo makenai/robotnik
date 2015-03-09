@@ -8,7 +8,7 @@ var uglify = require('gulp-uglify');
 
 var bundler = browserify({
   entries: [
-    es6ify.runtime,
+    //es6ify.runtime,
     './static/js/src/app.js'
   ],
   debug: true,
