@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="./vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="./vendor/bootstrap/dist/css/bootstrap.min.css">
   </head>
-  <body>
+  <body ng-app="robotnik">
+    <robotnik-main></robotnik-main>
+
     <div id="header">
       <h1 id="logo">Robotnik</h1>
       <div id="controls">
@@ -43,6 +45,7 @@
     <script type="text/javascript" src="./vendor/blockly/javascript_compressed.js"></script>
     <script type="text/javascript" src="./vendor/blockly/msg/js/en.js"></script>
     <script type="text/javascript" src="./js/src/RetroJoyStick.js"></script>
+    <script type="text/javascript" src="./vendor/angular/angular.min.js"></script>
     <!--
       This is the browserify bundle, which just includes robotnik.js for now.
       There should also be a vendors.js bundle for the bower modules.

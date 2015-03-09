@@ -14,11 +14,16 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "static/vendor"
   ],
   "dependencies": {
     "jquery": "~2.1.3",
     "bootstrap": "~3.3.2",
-    "font-awesome": "~4.3.0"
-  }
+    "font-awesome": "~4.3.0",
+    "angular": "~1.3.14"
+  },
+  "moduleType": [
+    "es6"
+  ]
 }

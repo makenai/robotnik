@@ -8,7 +8,8 @@ var uglify = require('gulp-uglify');
 
 var bundler = browserify({
   entries: [
-    './static/js/src/robotnik.js'
+    es6ify.runtime,
+    './static/js/src/app.js'
   ],
   debug: true,
   cache: { },
@@ -35,7 +36,6 @@ gulp.task('staticlibs', function () {
 
 gulp.task('bundle', function() {
   return bundler
-    .add(es6ify.runtime)
     .transform(es6ify)
     .bundle()
     //Pass desired output filename to vinyl-source-stream
