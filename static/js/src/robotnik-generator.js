@@ -1,33 +1,39 @@
-Blockly.JavaScript['led_on'] = function(block) {
-  return "led.on();\n";
-}
+module.exports = {
+  init: init
+};
 
-Blockly.JavaScript['led_off'] = function(block) {
-  return "led.off();\n";
-}
+function init() {
+  Blockly.JavaScript['led_on'] = function(block) {
+    return "led.on();\n";
+  }
 
-Blockly.JavaScript['while_button'] = function(block) {
+  Blockly.JavaScript['led_off'] = function(block) {
+    return "led.off();\n";
+  }
 
-  var button = block.getFieldValue('BUTTON'),
-    code = Blockly.JavaScript.statementToCode(block, 'DO'),
-    otherwise = Blockly.JavaScript.statementToCode(block, 'OTHERWISE'),
-    generated = '';
+  Blockly.JavaScript['while_button'] = function(block) {
 
-  if ( code )
-    generated = generated + "button.on('" + button + "', function() {\n" + code + "\n})\n";
+    var button = block.getFieldValue('BUTTON'),
+      code = Blockly.JavaScript.statementToCode(block, 'DO'),
+      otherwise = Blockly.JavaScript.statementToCode(block, 'OTHERWISE'),
+      generated = '';
 
-  if ( otherwise )
-    generated = generated + "button.off('" + button + "', function() {\n" + otherwise + "\n})\n";
+    if ( code )
+      generated = generated + "button.on('" + button + "', function() {\n" + code + "\n})\n";
 
-  return generated;
-}
+    if ( otherwise )
+      generated = generated + "button.off('" + button + "', function() {\n" + otherwise + "\n})\n";
 
-Blockly.JavaScript['motor_on'] = function(block) {
-  var motor = block.getFieldValue('MOTOR'),
-    direction = block.getFieldValue('DIRECTION');
-  return motor + '.' + direction + "();\n";
-}
+    return generated;
+  }
 
-Blockly.JavaScript['if_distance'] = function(block) {
-  return 'distance';
+  Blockly.JavaScript['motor_on'] = function(block) {
+    var motor = block.getFieldValue('MOTOR'),
+      direction = block.getFieldValue('DIRECTION');
+    return motor + '.' + direction + "();\n";
+  }
+
+  Blockly.JavaScript['if_distance'] = function(block) {
+    return 'distance';
+  }
 }
