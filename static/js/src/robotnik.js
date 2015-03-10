@@ -100,22 +100,6 @@ function init() {
       RunningWindow.close();
     });
 
-    $('#red').on('mousedown', function(e) {
-      sendMessage( 'control', 'red_down' );
-    }).on('mouseup', function(e) {
-      sendMessage( 'control', 'red_up' );
-    }).on('click', function(e) {
-      e.preventDefault();
-    });
-
-    $('#green').on('mousedown', function(e) {
-      sendMessage( 'control', 'green_down' );
-    }).on('mouseup', function(e) {
-      sendMessage( 'control', 'green_up' );
-    }).on('click', function(e) {
-      e.preventDefault();
-    });
-
     // Joystick controls!
     var past_directions = {
       up:    false,

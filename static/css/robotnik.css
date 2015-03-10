@@ -149,6 +149,7 @@ html, body {
 }
 
 #stop {
+  border: none;
   display: block;
   text-indent: -9999px;
   width: 48px;
@@ -159,13 +160,18 @@ html, body {
   background: url(../images/stop.png);
 }
 
+#stop:focus {
+  outline: 0;
+}
+
 #retrostick-1 {
   position: absolute;
   top: 75px;
   left: 60px;
 }
 
-#red {
+.red {
+  border: none;
   display: block;
   text-indent: -9999px;
   width: 60px;
@@ -176,7 +182,12 @@ html, body {
   right: 140px;
 }
 
-#green {
+.red:focus, .green:focus {
+  outline: 0;
+}
+
+.green {
+  border: none;
   display: block;
   text-indent: -9999px;
   width: 60px;
