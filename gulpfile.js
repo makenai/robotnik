@@ -2,6 +2,7 @@
 
 var browserify = require('browserify');
 var es6ify = require('es6ify');
+var partialify = require('partialify');
 var gulp = require('gulp');
 var source = require('vinyl-source-stream');
 var uglify = require('gulp-uglify');
@@ -36,6 +37,7 @@ gulp.task('staticlibs', function () {
 
 gulp.task('bundle', function() {
   return bundler
+    .transform(partialify)
     .transform(es6ify)
     .bundle()
     //Pass desired output filename to vinyl-source-stream
