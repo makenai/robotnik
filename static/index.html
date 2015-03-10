@@ -8,30 +8,9 @@
     <link rel="stylesheet" href="./vendor/bootstrap/dist/css/bootstrap.min.css">
   </head>
   <body ng-app="robotnik">
+
     <robotnik-main></robotnik-main>
 
-    <div id="header">
-      <h1 id="logo">Robotnik</h1>
-      <div id="controls">
-        <a href="https://github.com/rwaldron/johnny-five/wiki" id="docs" target="_blank">Johnny-Five Docs</a>
-        <button id="execute">Execute</button>
-      </div>
-      <ul id="tabs">
-        <li class="active"><a href="#" id="blocks-tab">Blocks</a></li>
-        <li><a href="#" id="code-tab">Code</a></li>
-      </ul>
-    </div>
-    <div id="tab-content">
-      <div id="blockly"></div>
-      <div id="code"></div>
-    </div>
-    <div id="runningWindow">
-      <h1>NOW RUNNING&hellip;</h1>
-
-      <a href="#" id="stop">STOP</a>
-      <a href="#" id="red">RED</a>
-      <a href="#" id="green">GREEN</a>
-    </div>
     <xml id="toolbox" style="display: none">
       <block type="while_button"></block>
       <block type="led_on"></block>

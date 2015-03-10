@@ -1,6 +1,6 @@
 import template from './templates/main.html';
 
-export default function main() {
+export default function() {
   return {
     template: template
   };

@@ -98,7 +98,6 @@ function init() {
     $('#stop').on('click', function(e) {
       e.preventDefault();
       RunningWindow.close();
-      sendMessage( 'control', 'stop' );
     });
 
     $('#red').on('mousedown', function(e) {
