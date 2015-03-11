@@ -2,7 +2,7 @@
   <h1 id="logo">Robotnik</h1>
   <div id="controls">
     <a href="https://github.com/rwaldron/johnny-five/wiki" id="docs" target="_blank">Johnny-Five Docs</a>
-    <button id="execute">Execute</button>
+    <button ng-click="vm.executeCode()">Execute</button>
   </div>
   <ul id="tabs">
     <li class="active"><a href="#" id="blocks-tab">Blocks</a></li>
@@ -14,4 +14,5 @@
   <div id="code"></div>
 </div>
 
-<running-controls></running-controls>
+
+<running-controls show="vm.showControls"></running-controls>

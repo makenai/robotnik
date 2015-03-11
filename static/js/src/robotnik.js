@@ -9,18 +9,11 @@ export default {
 
 function init() {
   var RunningWindow = {
-    show: function() {
-      this.center();
-      $('#runningWindow').show();
-    },
     center: function() {
       $('#runningWindow').css({
         top: ( $(window).height() / 2 ) - ( $('#runningWindow').height() / 2 ),
         left: ( $(window).width() / 2 ) - ( $('#runningWindow').width() / 2 )
       });
-    },
-    close: function() {
-      $('#runningWindow').hide()
     }
   };
 
@@ -68,10 +61,6 @@ function init() {
     }
 
     $('#execute').on('click', function(e) {
-      e.preventDefault();
-      setTimeout(function() {
-        RunningWindow.show();
-      }, 1000);
       if ( $('#code-tab').parent().is('.active') ) {
         sendMessage( 'code', editor.getValue() );
       } else {
@@ -83,7 +72,7 @@ function init() {
 
     $('#stop').on('click', function(e) {
       e.preventDefault();
-      RunningWindow.close();
+      //RunningWindow.close();
     });
 
     // Keep the tabs sized to the window minus the header

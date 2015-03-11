@@ -1,7 +1,7 @@
-<div id="runningWindow">
+<div id="runningWindow" ng-show="show">
   <h1>NOW RUNNING&hellip;</h1>
 
-  <button href="#" id="stop" ng-click="vm.stop()">STOP</button>
+  <button class="stop" ng-click="vm.stop()">STOP</button>
 
   <up-down-button class-name="red" label="RED" 
                   on-up="vm.redUp()" on-down="vm.redDown()">

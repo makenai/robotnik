@@ -4,28 +4,33 @@ export default function(commands) {
   return {
     template: template,
     controllerAs: 'vm',
-    scope: {},
-    controller: function() {
-      this.stop = stop;
+    scope: {
+      show: '=?'
+    },
+    controller: function($scope) {
+      this.stop = stop($scope);
       this.redDown = createCommandHandler('red', 'down');
       this.redUp = createCommandHandler('red', 'up');
       this.greenDown = createCommandHandler('green', 'down');
       this.greenUp = createCommandHandler('green', 'up');
-      this.joystickMove = joystickMove;
+      this.joystickMove = buttonChanged;
     }
   };
 
+  function buttonChanged(name, state) {
+    commands.send('control', `${name}_${state}`);
+  }
+
   function createCommandHandler(color, state) {
     return function() {
-      commands.send('control', `${color}_${state}`);
+      buttonChanged(color, state);
     }
   }
 
-  function joystickMove(direction, state) {
-    commands.send('control', `${direction}_${state}`);
-  }
-
-  function stop() {
-    commands.send( 'control', 'stop' );
+  function stop(scope) {
+    return function() {
+      scope.show = false;
+      commands.send( 'control', 'stop' );
+    }
   }
 }
