@@ -21,12 +21,6 @@ function init() {
     },
     close: function() {
       $('#runningWindow').hide()
-    },
-    init: function() {
-      this.joystick = new RetroJoyStick({
-        container: document.getElementById('runningWindow'),
-        position: 'custom'
-      })
     }
   };
 
@@ -54,8 +48,6 @@ function init() {
 
     var editor = ace.edit("code");
     editor.getSession().setMode("ace/mode/javascript");
-
-    RunningWindow.init();
 
     var preCode = [ 'var five = require("johnny-five"),',
       '\tboard = new five.Board(),',
@@ -87,69 +79,11 @@ function init() {
       }
     });
 
-    // Bad things happened
-    // socket.on( 'error', function() {
-    //   RunningWindow.close();
-    //   alert('The program closed unexpectedly. Please check the arduino is plugged in and your program.');
-    // })
-
     // Run window controls
 
     $('#stop').on('click', function(e) {
       e.preventDefault();
       RunningWindow.close();
-    });
-
-    // Joystick controls!
-    var past_directions = {
-      up:    false,
-      down:  false,
-      left:  false,
-      right: false
-    };
-
-    RunningWindow.joystick.on('change', function(e) {
-
-      if ( this.distance > 40 && this.angle > 40 && this.angle < 140 ) {
-        sendMessage( 'control', 'right_down' );
-        past_directions.right = true;
-      } else {
-        if ( past_directions.right ) {
-          sendMessage( 'control', 'right_up' );
-          past_directions.right = false;
-        }
-      }
-
-      if ( this.distance > 40 && this.angle < 320 && this.angle > 240 ) {
-        sendMessage( 'control', 'left_down' );
-        past_directions.left = true;
-      } else {
-        if ( past_directions.left ) {
-          sendMessage( 'control', 'left_up' );
-          past_directions.left = false;
-        }
-      }
-
-      if ( this.distance > 40 && ( this.angle < 40 || this.angle > 320 ) ) {
-        sendMessage('control', 'up_down');
-        past_directions.up = true;
-      } else {
-        if ( past_directions.up ) {
-          sendMessage( 'control', 'up_up' );
-          past_directions.up = false;
-        }
-      }
-
-      if ( this.distance > 40 && this.angle > 120 && this.angle < 240 ) {
-        sendMessage( 'control', 'down_down' );
-        past_directions.down = true;
-      } else {
-        if ( past_directions.down ) {
-          sendMessage( 'control', 'down_up' );
-          past_directions.down = false;
-        }
-      }
-
     });
 
     // Keep the tabs sized to the window minus the header

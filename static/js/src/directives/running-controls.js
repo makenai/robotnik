@@ -11,13 +11,18 @@ export default function(commands) {
       this.redUp = createCommandHandler('red', 'up');
       this.greenDown = createCommandHandler('green', 'down');
       this.greenUp = createCommandHandler('green', 'up');
+      this.joystickMove = joystickMove;
     }
   };
 
-  function createCommandHandler(color, direction) {
+  function createCommandHandler(color, state) {
     return function() {
-      commands.send('control', `${color}_${direction}`);
+      commands.send('control', `${color}_${state}`);
     }
+  }
+
+  function joystickMove(direction, state) {
+    commands.send('control', `${direction}_${state}`);
   }
 
   function stop() {
