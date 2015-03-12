@@ -1,6 +1,6 @@
 'use strict';
 
-function code(commands) {
+function code(commands, blockly) {
   return {
     generate: generate,
     execute: execute
@@ -11,7 +11,7 @@ function code(commands) {
   }
 
   function generate() {
-    var generated = Blockly.JavaScript.workspaceToCode();
+    var generated = blockly.code();
 
     return `
 var five = require("johnny-five"),

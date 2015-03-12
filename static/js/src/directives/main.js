@@ -1,10 +1,10 @@
 import template from './templates/main.html';
 
-export default function() {
+export default function($timeout, code, blockly) {
   return {
     template: template,
     controllerAs: 'vm',
-    controller: function(code) {
+    controller: function() {
       this.selected = 'blocks';
       this.showControls = false;
       this.executeCode = executeCode;
@@ -24,6 +24,11 @@ export default function() {
         this.selected = 'code';
         this.code = code.generate();
       }
+    },
+    link: function(scope, element) {
+      $timeout(function() {
+        blockly.init(element.find('#blockly')[0], element.find('#toolbox')[0]);  
+      }, 0, false);
     }
   };
 }
