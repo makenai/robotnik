@@ -58,69 +58,17 @@ html, body {
   background-color: #00a651;
 }
 
-#tabs {
-  position: absolute;
-  bottom: 0;
-  left: 400px;
-}
-
-/* Tabs */
-
-#tabs { 
-  margin: 0; 
-  padding: 0; 
-  bottom: 0;
-}
-#tabs li { 
-  display: inline-block; 
-  zoom:1; *display:inline; 
-  background: #eee; border: solid 1px #e2e2e2;
-  border-bottom: none; 
-  -moz-border-radius: 4px 4px 0 0; 
-  -webkit-border-radius: 4px 4px 0 0; 
-}
-#tabs a { 
-  width: 80px;
-  text-align: center;
-  font-size: 18px; 
-  line-height: 2em; 
-  display: block; 
-  padding: 0 10px; 
-  outline: none; 
-  text-decoration: none; 
-  color: black;
-}
-#tabs a:hover { 
-  color: red;
-}
-#tabs li.active { 
-  background: #fff; 
-  padding-top: 6px; 
-  position: relative; 
-  top: 1px; 
-  border-color: #e2e2e2; 
-}
-#tabs a.active { 
-  font-weight: bold; 
-}
-/*.tab-container .panel-container { background: #fff; border: solid #666 1px; padding: 10px; -moz-border-radius: 0 4px 4px 4px; -webkit-border-radius: 0 4px 4px 4px; }*/
-
-#tab-content div {
+.tab-content div {
   height: 100%;
 }
 
 #code {
-  display: none;
   border-top: 1px solid #e2e2e2;
-}
-
-#code {
   font-size: 18px;
 }
 
 #runningWindow {
   z-index: 10001;
-  display: none;
   width: 500px;
   height: 260px;
   border: 2px solid black;
@@ -148,7 +96,8 @@ html, body {
   margin: auto;
 }
 
-#stop {
+.stop {
+  border: none;
   display: block;
   text-indent: -9999px;
   width: 48px;
@@ -159,13 +108,18 @@ html, body {
   background: url(../images/stop.png);
 }
 
+.stop:focus {
+  outline: 0;
+}
+
 #retrostick-1 {
   position: absolute;
   top: 75px;
   left: 60px;
 }
 
-#red {
+.red {
+  border: none;
   display: block;
   text-indent: -9999px;
   width: 60px;
@@ -176,7 +130,12 @@ html, body {
   right: 140px;
 }
 
-#green {
+.red:focus, .green:focus {
+  outline: 0;
+}
+
+.green {
+  border: none;
   display: block;
   text-indent: -9999px;
   width: 60px;

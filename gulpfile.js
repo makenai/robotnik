@@ -2,13 +2,15 @@
 
 var browserify = require('browserify');
 var es6ify = require('es6ify');
+var partialify = require('partialify');
 var gulp = require('gulp');
 var source = require('vinyl-source-stream');
 var uglify = require('gulp-uglify');
 
 var bundler = browserify({
   entries: [
-    './static/js/src/robotnik.js'
+    //es6ify.runtime,
+    './static/js/src/app.js'
   ],
   debug: true,
   cache: { },
@@ -35,7 +37,7 @@ gulp.task('staticlibs', function () {
 
 gulp.task('bundle', function() {
   return bundler
-    .add(es6ify.runtime)
+    .transform(partialify)
     .transform(es6ify)
     .bundle()
     //Pass desired output filename to vinyl-source-stream

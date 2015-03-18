@@ -1,4 +1,19 @@
+'use strict';
 
+function code(commands, blockly) {
+  return {
+    generate: generate,
+    execute: execute
+  };
+
+  function execute(code) {
+    commands.send('code', code ? code : generate());
+  }
+
+  function generate() {
+    var generated = blockly.code();
+
+    return `
 var five = require("johnny-five"),
   board = new five.Board(),
   button = require('./lib/buttons')
@@ -9,14 +24,10 @@ board.on("ready", function() {
     right = new five.Servo({ pin: 11, type: 'continuous' }).stop(),
     sensor = new five.Sensor('A0');
 
-    button.on('red', function() {
-  led.on();
+    ${generated}
 
-})
-button.off('red', function() {
-  led.off();
+});`;
+  }
+}
 
-})
-
-
-});
+export default code;

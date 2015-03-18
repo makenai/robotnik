@@ -1,0 +1,17 @@
+<div id="runningWindow" ng-show="show">
+  <h1>NOW RUNNING&hellip;</h1>
+
+  <button class="stop" ng-click="vm.stop()">STOP</button>
+
+  <up-down-button class-name="red" label="RED" 
+                  on-up="vm.redUp()" on-down="vm.redDown()">
+  </up-down-button>
+
+  <up-down-button class-name="green" label="Green" 
+                  on-up="vm.greenUp()" on-down="vm.greenDown()">
+  </up-down-button>
+
+  <joystick on-move="vm.joystickMove(direction, state)"></joystick>
+
+
+</div>
