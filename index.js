@@ -74,3 +74,14 @@ app.post('/message', function(req,res) {
   }
   res.send('OK');
 });
+
+app.get('/api/workshops', function(req, res) {
+  fs.readdir('./workshops', function(err, files) {
+    var workshops = files.map(function(file) {
+      var fileData = fs.readFileSync('./workshops/' + file);
+      return JSON.parse(fileData);
+    });
+
+    res.send(workshops);  
+  });
+})

@@ -1,0 +1,40 @@
+{
+  "title": "Makerland Workshop",
+  "description": "This is a workshop for Makerland Conference using a sumobot kit with an LED and a proximity sensor.",
+  "components": [
+    {
+      "class": "Led",
+      "config": {
+        "pin": 13  
+      }
+    },
+    {
+      "class": "Servo",
+      "config": {
+        "pin": 7,
+        "type": "continuous"
+      }
+    },
+    {
+      "class": "Servo",
+      "config": {
+        "pin": 11,
+        "type": "continuous"
+      }
+    },
+    {
+      "class": "Sensor",
+      "config": {
+        "pin": "A0"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "text": "First, try to make an LED blink when you push a button."
+    },
+    {
+      "text": "Now make a motor turn clockwise"
+    }
+  ]
+}

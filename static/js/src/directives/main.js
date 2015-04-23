@@ -1,6 +1,6 @@
 import template from './templates/main.html';
 
-export default function($timeout, code, blockly) {
+export default function($timeout, code, blockly, Workshops) {
   return {
     template: template,
     controllerAs: 'vm',
@@ -10,6 +10,7 @@ export default function($timeout, code, blockly) {
       this.executeCode = executeCode;
       this.selectBlocks = selectBlocks;
       this.selectCode = selectCode;
+      this.workshops = Workshops.query();
 
       function executeCode() {
         this.showControls = true;
