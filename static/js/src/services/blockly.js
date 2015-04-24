@@ -4,10 +4,7 @@ import robotnikBlocks from '../robotnik-blocks.js';
 import robotnikGenerator from '../robotnik-generator.js';
 
 export default function() {
-  return {
-    init: init, 
-    code: code
-  };
+  return { init, code, serialize, reloadWorkspace };
 };
 
 function init(canvas, toolbox) {
@@ -23,5 +20,17 @@ function init(canvas, toolbox) {
 
 function code() {
   return Blockly.JavaScript.workspaceToCode();
+}
+
+function serialize() {
+  let workspace = Blockly.mainWorkspace;
+  let xml = Blockly.Xml.workspaceToDom(workspace);
+  let serialized = Blockly.Xml.domToText(xml);
+  return serialized;
+}
+
+function reloadWorkspace(data) {
+  let xml = Blockly.Xml.textToDom(data);
+  Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
 }
     
