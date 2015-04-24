@@ -1,4 +1,4 @@
-import template from './templates/workshop.html';
+import template from './workshop.html';
 
 export default function($timeout, code, blockly) {
   return {

@@ -1,4 +1,4 @@
-import template from './templates/running-controls.html';
+import template from './running-controls.html';
 
 export default function(commands) {
   return {

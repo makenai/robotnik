@@ -1,4 +1,4 @@
-import template from './templates/workshops.html';
+import template from './workshops.html';
 
 export default function(Workshops) {
   return {

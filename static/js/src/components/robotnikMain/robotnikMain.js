@@ -1,4 +1,4 @@
-import template from './templates/main.html';
+import template from './robotnikMain.html';
 
 export default function($timeout, code, blockly) {
   return {

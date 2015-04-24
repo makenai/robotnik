@@ -1,4 +1,4 @@
-import template from './templates/editor.html';
+import template from './editor.html';
 
 export default function() {
   return {
