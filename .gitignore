@@ -3,3 +3,4 @@ node_modules
 static/vendor/
 static/js/dest
 static/fonts
+workspaces/*.json
