@@ -79,7 +79,9 @@ app.get('/api/workshops', function(req, res) {
   fs.readdir('./workshops', function(err, files) {
     var workshops = files.map(function(file) {
       var fileData = fs.readFileSync('./workshops/' + file);
-      return JSON.parse(fileData);
+      var data = JSON.parse(fileData);
+      data.id = file.split('.')[0];
+      return data;
     });
 
     res.send(workshops);  

@@ -1,0 +1,6 @@
+<h2>Please select a workshop:</h2>
+<ul>
+	<li ng-repeat="workshop in vm.workshops">
+		<a ui-sref="workshop({id: workshop.id})">{{workshop.title}}</a>
+	</li>
+</ul>
