@@ -9,14 +9,12 @@ board.on("ready", function() {
     right = new five.Servo({ pin: 11, type: 'continuous' }).stop(),
     sensor = new five.Sensor('A0');
 
-    button.on('up', function() {
-  left.cw();
-  right.ccw();
+    button.on('red', function() {
+  led.on();
 
 })
-button.off('up', function() {
-  left.stop();
-  right.stop();
+button.off('red', function() {
+  led.off();
 
 })
 
