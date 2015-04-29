@@ -2,11 +2,11 @@
   "name": "robotnik",
   "version": "0.1.1",
   "description": "Robotnik is a visual programming library for my workshop at Makerland!",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "bower install && gulp",
-    "start": "node index.js",
+    "start": "electron .",
     "install": "napa"
   },
   "bin": {
@@ -32,6 +32,8 @@
     "temp": "~0.7.0"
   },
   "devDependencies": {
+    "atom-watcher": "^0.1.4",
+    "electron-prebuilt": "^0.25.1",
     "es6ify": "^1.6.0",
     "gulp": "^3.8.11",
     "gulp-uglify": "^1.1.0",

@@ -38,7 +38,10 @@ gulp.task('staticlibs', function () {
 gulp.task('bundle', function() {
   return bundler
     .transform(partialify)
-    .transform(es6ify)
+    .transform(
+      // Don't ES6-ify vendor files
+      es6ify.configure(/\/robotnik\/static\/js\/src\/.*\.js$/)
+    )
     .bundle()
     //Pass desired output filename to vinyl-source-stream
     .pipe(source('bundle.js'))
