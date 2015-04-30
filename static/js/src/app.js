@@ -1,15 +1,24 @@
 'use strict';
 
+import _ from 'lodash';
 import angular from 'angular';
+import angularResource from 'angular-resource';
+import angularRouter from 'angular-ui-router';
 import angularBootstrap from 'angular-bootstrap';
 
-import directives from './directives/directives.js';
+import components from './components/components.js';
 import services from './services/services.js';
+import models from './models/models.js';
 
-let app = angular.module('robotnik', ['ui.bootstrap']);
+import routes from './routes';
 
-directives.forEach(d => app.directive(d.name, d.directive));
-services.forEach(s => app.factory(s.name, s.service));
+let app = angular.module('robotnik', ['ngResource', 'ui.router', 'ui.bootstrap']);
+
+_.forIn(components, (value, name) => app.directive(name, value));
+_.forIn(services, (value, name) => app.factory(name, value));
+_.forIn(models, (value, name) => app.factory(name, value));
+
+app.config(routes);
 
 export default app;
 

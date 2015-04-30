@@ -1,0 +1,28 @@
+{
+  "title": "Line Racer",
+  "description": "This is a workshop for racing a robot using an IR Array.",
+  "components": [
+    {
+      "class": "IR.Reflect.Array",
+      "config": {
+        "pins": ["A0", "A1", "A2", "A3", "A4", "A5"],
+        "emitter": 13,
+        "autoCalibrate": true
+      }
+    },
+    {
+      "class": "Servo",
+      "config": {
+        "pin": 7,
+        "type": "continuous"
+      }
+    },
+    {
+      "class": "Servo",
+      "config": {
+        "pin": 11,
+        "type": "continuous"
+      }
+    }
+  ]
+}

@@ -11,7 +11,7 @@ function commands($http) {
       url: '/message',
       data: $.param({channel, message}),
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-    }).success(console.log);
+    });
   }
 }
 
