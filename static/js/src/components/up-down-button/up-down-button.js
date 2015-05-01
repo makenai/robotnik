@@ -1,4 +1,4 @@
-import template from './templates/up-down-button.html';
+import template from './up-down-button.html';
 
 export default function() {
   return {

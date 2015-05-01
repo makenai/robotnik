@@ -6,6 +6,8 @@ var partialify = require('partialify');
 var gulp = require('gulp');
 var source = require('vinyl-source-stream');
 var uglify = require('gulp-uglify');
+var watch = require('gulp-watch');
+var livereload = require('gulp-livereload');
 
 var bundler = browserify({
   entries: [
@@ -46,7 +48,16 @@ gulp.task('bundle', function() {
     //Pass desired output filename to vinyl-source-stream
     .pipe(source('bundle.js'))
     // Start piping stream to tasks!
-    .pipe(gulp.dest('./static/js/dest'));
+    .pipe(gulp.dest('./static/js/dest'))
+    .pipe(livereload());
+});
+
+gulp.task('watch', function() {
+  livereload.listen();
+
+  watch(['./static/js/src/**/*.js', './static/js/src/**/*.html'], function() {
+    gulp.start('bundle');
+  })
 });
 
 gulp.task('default', ['icons', 'staticlibs', 'bundle']);

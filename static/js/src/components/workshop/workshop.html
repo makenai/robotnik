@@ -1,10 +1,4 @@
-<div id="header">
-  <h1 id="logo">Robotnik</h1>
-  <div id="controls">
-    <a href="https://github.com/rwaldron/johnny-five/wiki" id="docs" target="_blank">Johnny-Five Docs</a>
-    <button ng-click="vm.executeCode()">Execute</button>
-  </div>
-</div>
+<button ng-click="vm.save()" class="btn btn-default">Save</button>
 
 <tabset>
   <tab heading="Blocks" select="vm.selectBlocks()">
@@ -22,5 +16,3 @@
   <block type="motor_on"></block>
   <block type="if_distance"></block>
 </xml>
-
-<running-controls show="vm.showControls"></running-controls>

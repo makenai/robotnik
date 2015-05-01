@@ -4,3 +4,4 @@ static/vendor/
 static/js/dest
 static/fonts
 robotnik-file.js
+workspaces/*.json

@@ -1,13 +1,19 @@
 'use strict';
 
-function code(commands, blockly) {
-  return {
-    generate: generate,
-    execute: execute
-  };
+function code(commands, blockly, Workspaces) {
+  return { generate, execute, saveWorkspace };
 
   function execute(code) {
     commands.send('code', code ? code : generate());
+  }
+
+  function saveWorkspace(data) {
+    let space = new Workspaces({
+      id: 'static',
+      data: data
+    });
+
+    space.$save();
   }
 
   function generate() {
