@@ -7,18 +7,6 @@ var gulp = require('gulp');
 var source = require('vinyl-source-stream');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
-var livereload = require('gulp-livereload');
-
-var bundler = browserify({
-  entries: [
-    //es6ify.runtime,
-    './static/js/src/app.js'
-  ],
-  debug: true,
-  cache: { },
-  packageCache: { },
-  fullPaths: true
-});
 
 gulp.task('icons', function () {
   return gulp.src([
@@ -38,20 +26,28 @@ gulp.task('staticlibs', function () {
 });
 
 gulp.task('bundle', function() {
-  return bundler
+  return browserify({
+      entries: [
+        './static/js/src/app.js'
+      ],
+      debug: true,
+      cache: { },
+      packageCache: { },
+      fullPaths: true
+    })
     .transform(partialify)
-    .transform(es6ify)
+    .transform(
+      // Don't ES6-ify vendor files
+      es6ify.configure(/\/robotnik\/static\/js\/src\/.*\.js$/)
+    )
     .bundle()
     //Pass desired output filename to vinyl-source-stream
     .pipe(source('bundle.js'))
     // Start piping stream to tasks!
     .pipe(gulp.dest('./static/js/dest'))
-    .pipe(livereload());
 });
 
 gulp.task('watch', function() {
-  livereload.listen();
-
   watch(['./static/js/src/**/*.js', './static/js/src/**/*.html'], function() {
     gulp.start('bundle');
   })
