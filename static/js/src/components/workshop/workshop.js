@@ -9,7 +9,8 @@ export default function($timeout, code, blockly, Workspaces) {
       this.selectBlocks = selectBlocks;
       this.selectCode = selectCode;
       this.save = save;
-      this.workspaces = Workspaces.query().$promise.then(processWorkspaces);
+      this.workspaces = [];
+      // processWorkspaces(); 
 
       function selectBlocks() {
         this.selected = 'blocks';
@@ -32,11 +33,11 @@ export default function($timeout, code, blockly, Workspaces) {
         }
 
         return workspaces;
-      } 
+      }
     },
     link: function(scope, element) {
       $timeout(function() {
-        blockly.init(element.find('#blockly')[0], element.find('#toolbox')[0]);  
+        blockly.init(element.find('#blockly')[0], element.find('#toolbox')[0]);
       }, 0, false);
 
       $( window ).resize(function() {

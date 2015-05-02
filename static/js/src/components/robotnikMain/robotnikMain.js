@@ -7,7 +7,7 @@ export default function($timeout, code, blockly) {
     controller: function() {
       this.showControls = false;
       this.executeCode = executeCode;
-      
+
       function executeCode() {
         this.showControls = true;
         code.execute(this.selected === 'code' ? this.code : null );
