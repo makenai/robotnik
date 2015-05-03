@@ -1,7 +1,7 @@
 'use strict';
 
 var browserify = require('browserify');
-var babelify = require("babelify");
+var es6ify = require('es6ify');
 var partialify = require('partialify');
 var gulp = require('gulp');
 var source = require('vinyl-source-stream');
@@ -43,7 +43,10 @@ gulp.task('bundle', function() {
       fullPaths: true
     })
     .transform(partialify)
-    .transform(babelify)
+    .transform(
+      // Don't ES6-ify vendor files
+      es6ify.configure(/\/robotnik\/static\/js\/src\/.*\.js$/)
+    )
     .bundle()
     //Pass desired output filename to vinyl-source-stream
     .pipe(source('bundle.js'))
@@ -62,7 +65,7 @@ gulp.task('watch', function() {
   watch(['./static/js/src/**/*.js', './static/js/src/**/*.html'], function() {
     gulp.start('bundle');
   });
-  
+
 });
 
 gulp.task('default', ['icons', 'staticlibs', 'workshops', 'bundle']);

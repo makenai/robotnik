@@ -37,7 +37,6 @@
     "temp": "~0.7.0"
   },
   "devDependencies": {
-    "babelify": "^6.0.2",
     "electron-prebuilt": "^0.25.1",
     "es6ify": "^1.6.0",
     "gulp": "^3.8.11",

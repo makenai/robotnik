@@ -11,7 +11,6 @@ import angular from 'angular';
 import 'angular-ui-router';
 import 'angular-bootstrap';
 import 'angular-pouchdb';
-import 'babelify/polyfill';
 
 import components from './components/components.js';
 import services from './services/services.js';
