@@ -5,7 +5,7 @@
     {
       "class": "Led",
       "config": {
-        "pin": 13  
+        "pin": 13
       }
     },
     {

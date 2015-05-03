@@ -1,16 +1,14 @@
 function Workspaces(pouchDB) {
 
-  return { query, get };
+  var db = pouchDB('Workspaces');
 
   function query() {
-    return 'WORKSPACE QUERY';
+    console.log('WORKSPACE QUERY');
     return [];
   }
 
-  function get() {
-    console.log('WORKSPACE GET');
-  }
 
+  return { query };
 }
 
 export default Workspaces;

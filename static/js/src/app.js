@@ -1,15 +1,17 @@
 'use strict';
 
-// Load up jquery globally first to avoid weird errors like
-// "TypeError: Cannot read property 'env' of undefined
-import jQuery from '../../vendor/jquery/dist/jquery.js';
+import jQuery from 'jquery';
 window.$ = window.jQuery = jQuery;
+
+import PouchDB from 'pouchdb';
+window.PouchDB = PouchDB;
 
 import _ from 'lodash';
 import angular from 'angular';
 import 'angular-ui-router';
 import 'angular-bootstrap';
 import 'angular-pouchdb';
+import 'babelify/polyfill';
 
 import components from './components/components.js';
 import services from './services/services.js';

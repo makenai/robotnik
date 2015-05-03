@@ -32,14 +32,16 @@
     "browserify": "^9.0.3",
     "express": "~3.4.8",
     "johnny-five": "~0.7.17",
+    "jquery": "^2.1.4",
     "lodash": "^3.7.0",
     "temp": "~0.7.0"
   },
   "devDependencies": {
-    "atom-watcher": "^0.1.4",
+    "babelify": "^6.0.2",
     "electron-prebuilt": "^0.25.1",
     "es6ify": "^1.6.0",
     "gulp": "^3.8.11",
+    "gulp-concat-json": "^1.0.0",
     "gulp-uglify": "^1.1.0",
     "gulp-watch": "^4.2.4",
     "napa": "^1.2.0",
