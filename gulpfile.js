@@ -32,6 +32,23 @@ gulp.task('workshops', function () {
     .pipe(gulp.dest("./static/js/src"));
 });
 
+gulp.task('vendor', function() {
+  return browserify({
+      entries: [
+        './static/js/src/vendor.js'
+      ],
+      debug: false,
+      cache: { },
+      packageCache: { },
+      fullPaths: true
+    })
+    .bundle()
+    //Pass desired output filename to vinyl-source-stream
+    .pipe(source('vendor.js'))
+    // Start piping stream to tasks!
+    .pipe(gulp.dest('./static/js/'));
+});
+
 gulp.task('bundle', function() {
   return browserify({
       entries: [
@@ -49,13 +66,14 @@ gulp.task('bundle', function() {
     )
     .bundle()
     //Pass desired output filename to vinyl-source-stream
-    .pipe(source('bundle.js'))
+    .pipe(source('app.js'))
     // Start piping stream to tasks!
-    .pipe(gulp.dest('./static/js/dest'));
+    .pipe(gulp.dest('./static/js/'));
 });
 
 gulp.task('watch', function() {
 
+  gulp.start('vendor');
   gulp.start('workshops');
   watch(['./workshops/*.json'], function() {
     gulp.start('workshops');
@@ -68,4 +86,4 @@ gulp.task('watch', function() {
 
 });
 
-gulp.task('default', ['icons', 'staticlibs', 'workshops', 'bundle']);
+gulp.task('default', ['icons', 'staticlibs', 'workshops', 'vendor', 'bundle']);

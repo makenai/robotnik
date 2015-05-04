@@ -34,6 +34,7 @@
     "johnny-five": "~0.7.17",
     "jquery": "^2.1.4",
     "lodash": "^3.7.0",
+    "pouchdb-find": "^0.3.4",
     "temp": "~0.7.0"
   },
   "devDependencies": {

@@ -1,5 +1,4 @@
 var bundledWorkshops = require('../bundled-workshops.json');
-var util = require('util');
 
 function Workshops($q, pouchDB) {
 

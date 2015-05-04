@@ -1,6 +1,6 @@
 <h2 class="col-md-8 col-md-offset-2">Please select a workshop:</h2>
 <div class="row">
-	<a ui-sref="workshop({id: workshop._id})" ng-repeat="workshop in vm.workshops">
+	<a ui-sref="workshop({workshopId: workshop._id})" ng-repeat="workshop in vm.workshops">
 		<div class="col-md-8 col-md-offset-2 well">
 			<h3 class="center">{{workshop.title}}</h3>
 			{{workshop.description}}

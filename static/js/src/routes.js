@@ -1,5 +1,5 @@
 function routes($stateProvider, $urlRouterProvider) {
-	
+
   $urlRouterProvider.otherwise("/workshops");
 
   $stateProvider
@@ -8,7 +8,7 @@ function routes($stateProvider, $urlRouterProvider) {
       template: "<workshops></workshops>"
     })
     .state('workshop', {
-      url: '/workshops/:id',
+      url: '/workshops/:workshopId',
       template: "<workshop></workshop>"
     });
 
