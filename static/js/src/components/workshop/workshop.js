@@ -8,9 +8,9 @@ export default function($timeout, $stateParams, code, blockly, Workspaces) {
       this.selected = 'blocks';
       this.selectBlocks = selectBlocks;
       this.selectCode = selectCode;
-      this.workspaces = [];
       this.workshopId = $stateParams.workshopId;
-      // processWorkspaces();
+
+      restoreWorkspace( this.workshopId );
 
       function selectBlocks() {
         this.selected = 'blocks';
@@ -21,12 +21,10 @@ export default function($timeout, $stateParams, code, blockly, Workspaces) {
         this.code = code.generate();
       }
 
-      function processWorkspaces(workspaces) {
-        if(workspaces.length) {
-          let workspace = workspaces[0];
-          blockly.reloadWorkspace(workspace.data);
-        }
-        return workspaces;
+      function restoreWorkspace(workshopId) {
+        Workspaces.load( workshopId ).then(function(result) {
+          blockly.reloadWorkspace( result.data );
+        });
       }
 
     },
