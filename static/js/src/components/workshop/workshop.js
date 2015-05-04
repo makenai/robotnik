@@ -23,7 +23,9 @@ export default function($timeout, $stateParams, code, blockly, Workspaces) {
 
       function restoreWorkspace(workshopId) {
         Workspaces.load( workshopId ).then(function(result) {
-          blockly.reloadWorkspace( result.data );
+          if ( result ) {
+            blockly.reloadWorkspace( result.data );
+          }
         });
       }
 
