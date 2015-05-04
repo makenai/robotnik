@@ -13,8 +13,9 @@ html, body {
 }
 
 #header {
-  position: relative;
-  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 #logo {
@@ -46,7 +47,6 @@ html, body {
   color: black;
   background-color: yellow;
   text-decoration: none;
-
 }
 
 #controls button:hover {
@@ -56,6 +56,15 @@ html, body {
 #execute {
   color: white;
   background-color: #00a651;
+}
+
+#ui-view {
+  margin-top: 60px;
+}
+
+ul.nav-tabs {
+  margin-left: 400px;
+  margin-bottom: -1px;
 }
 
 .tab-content div {

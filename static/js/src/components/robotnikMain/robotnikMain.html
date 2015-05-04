@@ -1,12 +1,13 @@
 <div id="header">
   <a ui-sref="workshops"><h1 id="logo">Robotnik</h1></a>
-  <div id="controls">
-    <a href="https://github.com/rwaldron/johnny-five/wiki" id="docs" target="_blank">Johnny-Five Docs</a>
-    <button ng-show="vm.stateParams.workshopId" ng-click="vm.executeCode()">Execute</button>
-    <button ng-show="vm.stateParams.workshopId" ng-click="vm.saveWorkspace()">Save</button>
-  </div>
 </div>
 
-<div ui-view></div>
+<div id="controls">
+  <a href="https://github.com/rwaldron/johnny-five/wiki" id="docs" target="_blank">Johnny-Five Docs</a>
+  <button ng-show="vm.stateParams.workshopId" ng-click="vm.executeCode()"><i class="fa fa-play"></i> Execute</button>
+  <button ng-show="vm.stateParams.workshopId" ng-click="vm.saveWorkspace()"><i class="fa fa-pencil"></i> Save</button>
+</div>
+
+<div ui-view id="ui-view"></div>
 
 <running-controls show="vm.showControls"></running-controls>
