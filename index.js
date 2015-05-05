@@ -12,7 +12,7 @@ var bodyParser = require('body-parser');
 app.set('port', process.env.PORT || 8057);
 app.use(express.static(__dirname + '/static'));
 app.use(express.urlencoded());
-app.use(bodyParser.json());    
+app.use(bodyParser.json());
 
 server.listen(app.get("port"), function () {
   console.log("Please connect to http://localhost:" + app.get("port"));
@@ -87,7 +87,7 @@ app.get('/api/workshops', function(req, res) {
       return data;
     });
 
-    res.send(workshops);  
+    res.send(workshops);
   });
 })
 
@@ -95,11 +95,12 @@ app.get('/api/workspaces', function(req, res) {
   fs.readdir('./workspaces', function(err, files) {
     var workspaces = files.map(function(file) {
       var fileData = fs.readFileSync('./workspaces/' + file);
-      var data = JSON.parse(fileData);
-      data.id = file.split('.')[0];
-      return data;
+      if ( fileData.length ) {
+        var data = JSON.parse(fileData);
+        data.id = file.split('.')[0];
+        return data;
+      }
     });
-
     res.send(workspaces);
   });
 });
