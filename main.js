@@ -1,6 +1,17 @@
 var app = require('app');
 var BrowserWindow = require('browser-window');
 var Tray = require('tray');
+var vm = require('vm');
+var ipc = require('ipc');
+
+ipc.on('code', function(event, code) {
+  console.log( code );
+  var sandbox = {
+    require: require
+  };
+  vm.runInNewContext( code, sandbox );
+  // console.log( sandbox );
+});
 
 // Report crashes to our server.
 require('crash-reporter').start();

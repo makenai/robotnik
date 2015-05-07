@@ -3,13 +3,25 @@ export default {
 };
 
 function init() {
+
+  Blockly.Blocks['console_log'] = {
+    init: function() {
+      this.setColour(320);
+      this.appendDummyInput()
+          .appendField('console.log')
+          .appendField(new Blockly.FieldTextInput('Hello World.'), 'TEXT');
+      this.setNextStatement(true);
+      this.setPreviousStatement(true);
+    }
+  };
+
   Blockly.Blocks['led_on'] = {
     init: function() {
       this.setColour(120);
       this.appendDummyInput()
           .appendField('turn LED on');
       this.setNextStatement(true);
-      this.setPreviousStatement(true);    
+      this.setPreviousStatement(true);
     }
   };
 
@@ -19,7 +31,7 @@ function init() {
       this.appendDummyInput()
           .appendField('turn LED off');
       this.setNextStatement(true);
-      this.setPreviousStatement(true);    
+      this.setPreviousStatement(true);
     }
   };
 
@@ -49,11 +61,11 @@ function init() {
       this.appendDummyInput()
           .appendField('while')
           .appendField(new Blockly.FieldDropdown([
-            ['red', 'red'], 
-            ['green', 'green'], 
-            ['up', 'up'], 
-            ['down', 'down'], 
-            ['left', 'left'], 
+            ['red', 'red'],
+            ['green', 'green'],
+            ['up', 'up'],
+            ['down', 'down'],
+            ['left', 'left'],
             ['right', 'right']
           ]), 'BUTTON')
           .appendField('button is pressed');
@@ -78,4 +90,3 @@ function init() {
     }
   };
 }
-

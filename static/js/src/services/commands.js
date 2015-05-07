@@ -1,17 +1,17 @@
 'use strict';
 
 function commands($http) {
+
   return {
     send: send
   };
 
   function send(channel, message) {
-    $http({
-      method: 'POST',
-      url: '/message',
-      data: $.param({channel, message}),
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-    });
+    if ( typeof(ipc) !== 'undefined' ) {
+      ipc.send( channel, message );
+    } else {
+      console.log('Support outside of electron is pending.');
+    }
   }
 }
 

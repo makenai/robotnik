@@ -10,8 +10,11 @@
   </head>
   <body ng-app="robotnik">
     <robotnik-main></robotnik-main>
+
     <script>
-      var remote = require('remote');
+      if ( typeof(require) !== 'undefined' ) {
+        window.ipc = require('ipc');
+      }
     </script>
 
     <script type="text/javascript" src="./vendor/blockly/blockly_compressed.js"></script>

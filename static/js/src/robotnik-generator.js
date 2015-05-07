@@ -3,6 +3,11 @@ export default {
 };
 
 function init() {
+
+  Blockly.JavaScript['console_log'] = function(block) {
+    return "console.log('" + block.getFieldValue('TEXT') + "');\n";
+  }
+
   Blockly.JavaScript['led_on'] = function(block) {
     return "led.on();\n";
   }
@@ -19,10 +24,10 @@ function init() {
       generated = '';
 
     if ( code )
-      generated = generated + "button.on('" + button + "', function() {\n" + code + "\n})\n";
+      generated = generated + "button.on('" + button + "', function() {\n" + code + "})\n";
 
     if ( otherwise )
-      generated = generated + "button.off('" + button + "', function() {\n" + otherwise + "\n})\n";
+      generated = generated + "button.off('" + button + "', function() {\n" + otherwise + "})\n";
 
     return generated;
   }
