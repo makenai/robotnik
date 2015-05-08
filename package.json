@@ -1,7 +1,7 @@
 {
   "name": "robotnik",
-  "version": "0.1.1",
-  "description": "Robotnik is a visual programming library for my workshop at Makerland!",
+  "version": "0.2.1",
+  "description": "Robotnik is a visual programming library for nodebots.",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,27 @@
     "start": "electron .",
     "install": "napa"
   },
-  "bin": {
-    "robotnik": "./index.js"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/makenai/robotnik.git"
   },
-  "author": "Pawel Szymczykowski",
+  "author": {
+    "name": "Pawel Szymczykowski",
+    "email": "makenai@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Brian Genisio",
+      "email": "<BrianGenisio@Gmail.com"
+    },
+    {
+      "name": "David Resseguie",
+      "email": "david@resseguie.com"
+    },
+    {
+      "name": "Linda Nichols"
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/makenai/robotnik/issues"
@@ -48,6 +61,7 @@
     "gulp-watch": "^4.2.4",
     "napa": "^1.2.0",
     "partialify": "^3.1.3",
+    "robotnik-controls": "0.0.1",
     "vinyl-source-stream": "^1.0.0"
   },
   "napa": {

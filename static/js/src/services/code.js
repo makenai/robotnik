@@ -11,9 +11,9 @@ function code(commands, blockly) {
     var generated = blockly.code();
 
     var code = `
-var five = require("johnny-five"),
+var five = require('johnny-five'),
   board = new five.Board(),
-  button = require('./lib/buttons')
+  button = require('robotnik-controls');
 
 board.on("ready", function() {
 
