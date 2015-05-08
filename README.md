@@ -9,3 +9,7 @@ This was developed for a workshop for Makerland Conference. If I was smarter, I 
 ## Setup
 
 `npm install`
+
+## Running
+
+`npm start`

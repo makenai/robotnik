@@ -1,6 +1,6 @@
 import template from './workshop.html';
 
-export default function($timeout, code, blockly, Workspaces) {
+export default function($timeout, $stateParams, code, blockly, Workspaces) {
   return {
     template: template,
     controllerAs: 'vm',
@@ -8,8 +8,9 @@ export default function($timeout, code, blockly, Workspaces) {
       this.selected = 'blocks';
       this.selectBlocks = selectBlocks;
       this.selectCode = selectCode;
-      this.save = save;
-      this.workspaces = Workspaces.query().$promise.then(processWorkspaces);
+      this.workshopId = $stateParams.workshopId;
+
+      restoreWorkspace( this.workshopId );
 
       function selectBlocks() {
         this.selected = 'blocks';
@@ -20,28 +21,25 @@ export default function($timeout, code, blockly, Workspaces) {
         this.code = code.generate();
       }
 
-      function save() {
-        var data = blockly.serialize();
-        code.saveWorkspace(data);
+      function restoreWorkspace(workshopId) {
+        Workspaces.load( workshopId ).then(function(result) {
+          if ( result ) {
+            blockly.reloadWorkspace( result.data );
+          }
+        });
       }
 
-      function processWorkspaces(workspaces) {
-        if(workspaces.length) {
-          let workspace = workspaces[0];
-          blockly.reloadWorkspace(workspace.data);
-        }
-
-        return workspaces;
-      } 
     },
     link: function(scope, element) {
+
       $timeout(function() {
-        blockly.init(element.find('#blockly')[0], element.find('#toolbox')[0]);  
+        blockly.init(element.find('#blockly')[0], element.find('#toolbox')[0]);
       }, 0, false);
 
       $( window ).resize(function() {
         element.find('.tab-content').css('height', $(window).height() - 100 + 'px' );
       });
+
     }
   };
 }

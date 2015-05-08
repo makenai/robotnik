@@ -18,7 +18,7 @@ export default function(commands) {
   };
 
   function buttonChanged(name, state) {
-    commands.send('control', `${name}_${state}`);
+    commands.send('control', [ name, state ]);
   }
 
   function createCommandHandler(color, state) {
