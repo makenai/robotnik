@@ -5,14 +5,10 @@ function Workspaces($q, pouchDB) {
   var db = pouchDB('Workspaces');
 
   function load(workshopId) {
-    return $q(function(resolve, reject) {
-      db.find({
-        selector: { workshopId },
-        limit: 1
-      }).then(function(result) {
-        resolve( result.docs[0] );
-      });
-    });
+    return db.find({
+      selector: { workshopId },
+      limit: 1
+    }).then(result => result.docs[0]);
   }
 
   function save(data) {
