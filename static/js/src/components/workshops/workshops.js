@@ -4,10 +4,11 @@ export default function(Workshops) {
   return {
     template: template,
     controllerAs: 'vm',
+    scope: {
+      model: '='
+    },
     controller: function($scope) {
-      Workshops.query().then(function(workshops) {
-        this.workshops = workshops;
-      }.bind(this));
+      this.workshops = $scope.model;
     }
   };
 }

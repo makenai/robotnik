@@ -4,13 +4,15 @@ export default function($timeout, $stateParams, code, blockly, Workspaces) {
   return {
     template: template,
     controllerAs: 'vm',
-    controller: function() {
+    scope: {
+      model: '='
+    },
+    controller: function($scope) {
+      this.workshop = $scope.model;
       this.selected = 'blocks';
       this.selectBlocks = selectBlocks;
       this.selectCode = selectCode;
-      this.workshopId = $stateParams.workshopId;
-
-      restoreWorkspace( this.workshopId );
+      restoreWorkspace( this.workshop._id );
 
       function selectBlocks() {
         this.selected = 'blocks';

@@ -5,14 +5,13 @@ function Workshops($q, pouchDB) {
   var db = pouchDB('Workshops');
 
   function query() {
-    return $q(function(resolve, reject) {
-      db.allDocs({
-        include_docs: true
-      }).then(function(result) {
-        var workshops = result.rows.map( w => w.doc );
-        resolve( workshops );
-      });
-    });
+    return db.allDocs({ 
+      include_docs: true
+    }).then(result => result.rows.map( w => w.doc ));
+  }
+
+  function get(id) {
+    return db.get(id);
   }
 
   // Create initial records, but only if the document database is empty
@@ -25,7 +24,7 @@ function Workshops($q, pouchDB) {
   }
   initializeBundledWorkshops();
 
-  return { query };
+  return { query, get };
 }
 
 export default Workshops;
