@@ -12,4 +12,6 @@ This was developed for a workshop for Makerland Conference. If I was smarter, I 
 
 ## Running
 
-`npm start`
+`npm start` - to run the electron version
+`npm run webserver` - to run the web version
+`npm run dev` - to run the web version with nodemon and asset recompilation

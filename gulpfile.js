@@ -18,11 +18,27 @@ gulp.task('icons', function () {
     .on('error', console.log);
 });
 
-gulp.task('staticlibs', function () {
+gulp.task('blockly', function () {
   return gulp.src([
       './node_modules/blockly/**',
     ])
     .pipe(gulp.dest('./static/vendor/blockly'))
+    .on('error', console.log);
+});
+
+gulp.task('css', function() {
+    return gulp.src([
+        './node_modules/bootstrap/dist/css/bootstrap.min.css'
+    ])
+    .pipe(gulp.dest('./static/vendor/bootstrap/dist/css/'))
+    .on('error', console.log);
+});
+
+gulp.task('fonts', function() {
+   return gulp.src([
+        './node_modules/font-awesome/**',
+    ])
+    .pipe(gulp.dest('./static/vendor/font-awesome/'))
     .on('error', console.log);
 });
 
@@ -86,4 +102,4 @@ gulp.task('watch', function() {
 
 });
 
-gulp.task('default', ['icons', 'staticlibs', 'workshops', 'vendor', 'bundle']);
+gulp.task('default', ['icons', 'blockly', 'css', 'fonts', 'workshops', 'vendor', 'bundle']);

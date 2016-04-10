@@ -10,7 +10,7 @@ function commands($http) {
     if ( typeof(ipc) !== 'undefined' ) {
       ipc.send( channel, message );
     } else {
-      console.log('Support outside of electron is pending.');
+      socket.emit( channel, message );
     }
   }
 }

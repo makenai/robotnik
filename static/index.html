@@ -11,9 +11,12 @@
   <body ng-app="robotnik">
     <robotnik-main></robotnik-main>
 
+    <script src="/socket.io/socket.io.js"></script>
     <script>
       if ( typeof(require) !== 'undefined' ) {
         window.ipc = require('ipc');
+      } else {
+        window.socket = io();
       }
     </script>
 
