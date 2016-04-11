@@ -8,22 +8,18 @@ function Workshops($q, pouchDB) {
     return db.allDocs({
       include_docs: true
     }).then(function(result) {
-      if ( result.total_rows == 0 ) {
-        // No rows, so load the bundled workshops, then return them from the DB
-        // with id's.
-        return db.bulkDocs(bundledWorkshops).then(function(results) {
-          return db.allDocs({
-            include_docs: true
-          }).then(result => result.rows.map( w => w.doc ));
-        });
-      } else {
-        return result.rows.map( w => w.doc );
-      }
+      var rows = result.rows.map( w => w.doc );
+      return bundledWorkshops.concat( rows );
     });
   }
 
   function get(id) {
-    return db.get(id);
+    var bundledWorkshop = bundledWorkshops.find( doc => doc._id === id );
+    if (bundledWorkshop) {
+      return bundledWorkshop;
+    } else {
+      return db.get(id).then( result => result );
+    }
   }
 
   return { query, get };

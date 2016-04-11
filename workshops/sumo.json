@@ -1,14 +1,18 @@
 {
+  "_id": "makerland",
   "title": "Makerland Workshop",
   "description": "This is a workshop for Makerland Conference using a sumobot kit with an LED and a proximity sensor.",
+  "board": "uno",
   "components": [
     {
+      "name": "led",
       "class": "Led",
       "config": {
         "pin": 13
       }
     },
     {
+      "name": "left",
       "class": "Servo",
       "config": {
         "pin": 7,
@@ -16,6 +20,7 @@
       }
     },
     {
+      "name": "right",
       "class": "Servo",
       "config": {
         "pin": 11,
@@ -23,6 +28,7 @@
       }
     },
     {
+      "name": "sensor",
       "class": "Sensor",
       "config": {
         "pin": "A0"

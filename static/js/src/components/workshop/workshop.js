@@ -12,6 +12,7 @@ export default function($timeout, $stateParams, code, blockly, Workspaces) {
       this.selected = 'blocks';
       this.selectBlocks = selectBlocks;
       this.selectCode = selectCode;
+      code.setWorkshop( this.workshop );
       restoreWorkspace( this.workshop._id );
 
       function selectBlocks() {

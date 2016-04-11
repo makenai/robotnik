@@ -19,7 +19,7 @@ export default function(Workspaces) {
   }
 
   function code() {
-    return Blockly.JavaScript.workspaceToCode();
+    return Blockly.JavaScript.workspaceToCode(Blockly.mainWorkspace);
   }
 
   function saveWorkspace(workshopId) {
@@ -36,7 +36,7 @@ export default function(Workspaces) {
 
   function reloadWorkspace(data) {
     let xml = Blockly.Xml.textToDom(data);
-    Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
+    Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
   }
 
 };

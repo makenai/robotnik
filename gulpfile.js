@@ -48,6 +48,12 @@ gulp.task('workshops', function () {
     .pipe(gulp.dest("./static/js/src"));
 });
 
+gulp.task('boards', function () {
+  return gulp.src('./boards/*.json')
+    .pipe(concat_json("bundled-boards.json"))
+    .pipe(gulp.dest("./static/js/src"));
+});
+
 gulp.task('vendor', function() {
   return browserify({
       entries: [
@@ -90,9 +96,15 @@ gulp.task('bundle', function() {
 gulp.task('watch', function() {
 
   gulp.start('vendor');
+  
   gulp.start('workshops');
   watch(['./workshops/*.json'], function() {
     gulp.start('workshops');
+  });
+
+  gulp.start('boards');
+  watch(['./boards/*.json'], function() {
+    gulp.start('boards');
   });
 
   gulp.start('bundle');
@@ -102,4 +114,4 @@ gulp.task('watch', function() {
 
 });
 
-gulp.task('default', ['icons', 'blockly', 'css', 'fonts', 'workshops', 'vendor', 'bundle']);
+gulp.task('default', ['icons', 'blockly', 'css', 'fonts', 'boards', 'workshops', 'vendor', 'bundle']);

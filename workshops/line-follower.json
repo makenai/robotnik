@@ -1,8 +1,10 @@
 {
+  "_id": "line_racer",
   "title": "Line Racer",
   "description": "This is a workshop for racing a robot using an IR Array.",
   "components": [
     {
+      "name": "lineSensor",
       "class": "IR.Reflect.Array",
       "config": {
         "pins": ["A0", "A1", "A2", "A3", "A4", "A5"],
@@ -11,6 +13,7 @@
       }
     },
     {
+      "name": "left",
       "class": "Servo",
       "config": {
         "pin": 7,
@@ -18,6 +21,7 @@
       }
     },
     {
+      "name": "right",
       "class": "Servo",
       "config": {
         "pin": 11,
