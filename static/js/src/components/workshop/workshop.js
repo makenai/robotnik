@@ -1,4 +1,5 @@
 import template from './workshop.html';
+import Toolbox from '../../lib/toolbox';
 
 export default function($timeout, $stateParams, code, blockly, Workspaces) {
   return {
@@ -9,11 +10,14 @@ export default function($timeout, $stateParams, code, blockly, Workspaces) {
     },
     controller: function($scope) {
       this.workshop = $scope.model;
+      this.exerciseId = $stateParams.exercise;
+      this.workshop.setExercise( this.exerciseId );
       this.selected = 'blocks';
       this.selectBlocks = selectBlocks;
       this.selectCode = selectCode;
+      restoreWorkspace( this.workshop.getId() );
+
       code.setWorkshop( this.workshop );
-      restoreWorkspace( this.workshop._id );
 
       function selectBlocks() {
         this.selected = 'blocks';
@@ -35,8 +39,9 @@ export default function($timeout, $stateParams, code, blockly, Workspaces) {
     },
     link: function(scope, element) {
 
+      var toolbox = Toolbox.forWorkshop( scope.model );
       $timeout(function() {
-        blockly.init(element.find('#blockly')[0], element.find('#toolbox')[0]);
+        blockly.init(element.find('#blockly')[0], toolbox);
       }, 0, false);
 
       $( window ).resize(function() {

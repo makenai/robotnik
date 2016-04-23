@@ -1,13 +1,23 @@
-<div id="header">
-  <a ui-sref="workshops"><h1 id="logo">Robotnik</h1></a>
-</div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" ui-sref="workshops">
+        <img alt="Robotnik" src="/images/logo-trimmed.png" />
+      </a>
+    </div>
+  </div>
+</nav>
 
-<div id="controls">
+<!-- <div id="header">
+  <a ui-sref="workshops"><h1 id="logo">Robotnik</h1></a>
+</div> -->
+
+<!-- <div id="controls">
   <a href="https://github.com/rwaldron/johnny-five/wiki" id="docs" target="_blank">Johnny-Five Docs</a>
   <button ng-show="vm.stateParams.workshopId" ng-click="vm.executeCode()"><i class="fa fa-play"></i> Execute</button>
-  <button ng-show="vm.stateParams.workshopId" ng-click="vm.saveWorkspace()"><i class="fa fa-pencil"></i> Save</button>
-</div>
+  <button ng-show="vm.stateParams.workshopId" ng-click="vm.saveWorkspace()"><i class="fa faa-pencil"></i> Save</button>
+</div> -->
 
 <div ui-view id="ui-view"></div>
 
-<running-controls show="vm.showControls"></running-controls>
+<!-- <running-controls show="vm.showControls"></running-controls> -->

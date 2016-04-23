@@ -1,3 +1,4 @@
+import Workshop from './workshop';
 var bundledWorkshops = require('../bundled-workshops.json');
 
 function Workshops($q, pouchDB) {
@@ -15,11 +16,13 @@ function Workshops($q, pouchDB) {
 
   function get(id) {
     var bundledWorkshop = bundledWorkshops.find( doc => doc._id === id );
+    var workshopData;
     if (bundledWorkshop) {
-      return bundledWorkshop;
+      workshopData = bundledWorkshop;
     } else {
-      return db.get(id).then( result => result );
+      workshopData = db.get(id).then( result => result );
     }
+    return new Workshop( workshopData );
   }
 
   return { query, get };

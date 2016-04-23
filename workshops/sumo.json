@@ -12,7 +12,7 @@
       }
     },
     {
-      "name": "left",
+      "name": "leftServo",
       "class": "Servo",
       "config": {
         "pin": 7,
@@ -20,7 +20,7 @@
       }
     },
     {
-      "name": "right",
+      "name": "rightServo",
       "class": "Servo",
       "config": {
         "pin": 11,
@@ -28,8 +28,8 @@
       }
     },
     {
-      "name": "sensor",
-      "class": "Sensor",
+      "name": "button",
+      "class": "Button",
       "config": {
         "pin": "A0"
       }
@@ -37,10 +37,16 @@
   ],
   "exercises": [
     {
-      "text": "First, try to make an LED blink when you push a button."
+      "description": "First, try to make an LED blink when you push a button.",
+      "components": [
+        "led", "button"
+      ]
     },
     {
-      "text": "Now make a motor turn clockwise"
+      "description": "Now make a motor turn clockwise, when you press the button",
+      "components": [
+        "leftServo", "button"
+      ]
     }
   ]
 }
