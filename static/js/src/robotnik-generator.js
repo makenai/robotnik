@@ -8,12 +8,13 @@ function init() {
     return "console.log('" + block.getFieldValue('TEXT') + "');\n";
   }
 
-  Blockly.JavaScript['led_on'] = function(block) {
-    return "led.on();\n";
-  }
-
-  Blockly.JavaScript['led_off'] = function(block) {
-    return "led.off();\n";
+  Blockly.JavaScript['led'] = function(block) {
+      var ledstate = block.getFieldValue('LED');
+      if (ledstate === "blink") {
+          return 'led.blink(' + block.getFieldValue('BLINKSPEED') + ');\n';
+      } else {
+        return 'led.' + ledstate + '();\n';
+      }
   }
 
   Blockly.JavaScript['while_button'] = function(block) {
@@ -31,6 +32,7 @@ function init() {
 
     return generated;
   }
+
 
   Blockly.JavaScript['motor_on'] = function(block) {
     var motor = block.getFieldValue('MOTOR'),

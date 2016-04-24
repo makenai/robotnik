@@ -39,9 +39,10 @@ export default function($timeout, $stateParams, code, blockly, Workspaces) {
     },
     link: function(scope, element) {
 
-      var toolbox = Toolbox.forWorkshop( scope.model );
+      var toolbox = new Toolbox(scope.model);
+      console.log(toolbox.xml);
       $timeout(function() {
-        blockly.init(element.find('#blockly')[0], toolbox);
+        blockly.init(element.find('#blockly')[0], toolbox.xml);
       }, 0, false);
 
       $( window ).resize(function() {

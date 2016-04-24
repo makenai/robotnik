@@ -8,6 +8,12 @@ export default function(Workspaces) {
   return { init, code, serialize, reloadWorkspace, saveWorkspace };
 
   function init(canvas, toolbox) {
+
+    // these are being called and then creating a side effect on the
+    // global Blockly object. Will also load all POSSIBLE blocks that have
+    // been defined.
+    // TODO update this to load the generators and blocks for each item
+    // that has been added to the toolbox object or something
     robotnikGenerator.init();
     robotnikBlocks.init();
 
