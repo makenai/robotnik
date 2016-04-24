@@ -11,15 +11,23 @@ Toolbox.prototype.addBlock = function(name) {
 }
 
 Toolbox.prototype.generate = function() {
-  return "<xml>\n" + this.blocks.join("\n") + "\n</xml>";
+  return '<xml>\n' + this.blocks.join("\n") + '\n</xml>';
 };
 
 Toolbox.forWorkshop = function(workshop) {
+
+    console.log("getting toolbox");
+
+    // get the components we need.
+    // how do we get defaults?
+    // do we need additional block options??
+
+
+
     var toolbox = new Toolbox();
     toolbox.addBlock('console_log');
     toolbox.addBlock('while_button');
-    toolbox.addBlock('led_on');
-    toolbox.addBlock('led_off');
+    toolbox.addBlock('led');
     toolbox.addBlock('motor_on');
     toolbox.addBlock('if_distance');
     return toolbox.generate();
