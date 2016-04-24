@@ -10,8 +10,8 @@ export default function($timeout, $stateParams, code, blockly, Workspaces) {
     },
     controller: function($scope) {
       this.workshop = $scope.model;
-      this.exerciseId = $stateParams.exercise;
-      this.workshop.setExercise( this.exerciseId );
+      this.exerciseId = $stateParams.exercise - 1; // urls are kept pretty
+      this.workshop.setExercise( this.exerciseId);
       this.selected = 'blocks';
       this.selectBlocks = selectBlocks;
       this.selectCode = selectCode;
