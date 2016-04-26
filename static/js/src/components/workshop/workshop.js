@@ -5,13 +5,14 @@ export default function($timeout, $stateParams, code, blockly, Workspaces) {
   return {
     template: template,
     controllerAs: 'vm',
+    restrict: 'E',
     scope: {
       model: '='
     },
     controller: function($scope) {
       this.workshop = $scope.model;
       this.exerciseId = $stateParams.exercise;
-      this.workshop.setExercise( this.exerciseId );
+      this.workshop.setExercise( this.exerciseId - 1 );
       this.selected = 'blocks';
       this.selectBlocks = selectBlocks;
       this.selectCode = selectCode;

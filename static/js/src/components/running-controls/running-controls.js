@@ -14,6 +14,16 @@ export default function(commands) {
       this.greenDown = createCommandHandler('green', 'down');
       this.greenUp = createCommandHandler('green', 'up');
       this.joystickMove = buttonChanged;
+      $scope.$watch('show', function(showModal) {
+        $('#runningWindow').modal( showModal ? 'show' : 'hide' );
+      });
+    },
+    link: function(scope,commands) {
+      $('#runningWindow').modal({
+        keyboard: false,
+        backdrop: 'static',
+        show: false
+      });
     }
   };
 
