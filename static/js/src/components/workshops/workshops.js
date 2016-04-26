@@ -4,6 +4,7 @@ export default function(Workshops) {
   return {
     template: template,
     controllerAs: 'vm',
+    restrict: 'E',
     scope: {
       model: '='
     },

@@ -5,6 +5,7 @@ export default function($timeout, $stateParams, code, blockly, Workspaces) {
   return {
     template: template,
     controllerAs: 'vm',
+    restrict: 'E',
     scope: {
       model: '='
     },

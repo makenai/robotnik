@@ -1,17 +1,20 @@
-<div id="runningWindow" ng-show="show">
-  <h1>NOW RUNNING&hellip;</h1>
-
-  <button class="stop" ng-click="vm.stop()">STOP</button>
-
-  <up-down-button class-name="red" label="RED" 
-                  on-up="vm.redUp()" on-down="vm.redDown()">
-  </up-down-button>
-
-  <up-down-button class-name="green" label="Green" 
-                  on-up="vm.greenUp()" on-down="vm.greenDown()">
-  </up-down-button>
-
-  <joystick on-move="vm.joystickMove(direction, state)"></joystick>
-
-
+<div id="runningWindow" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="vm.stop()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Now Running&hellip;</h4>
+      </div>
+      <div class="modal-body">
+        <div id="runningWindowControls">
+          <joystick on-move="vm.joystickMove(direction, state)"></joystick>
+          <up-down-button class-name="red" label="RED" on-up="vm.redUp()" on-down="vm.redDown()"></up-down-button>
+          <up-down-button class-name="green" label="Green" on-up="vm.greenUp()" on-down="vm.greenDown()"></up-down-button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" ng-click="vm.stop()"><i class="fa fa-stop"></i> STOP</button>
+      </div>
+    </div>
+  </div>
 </div>

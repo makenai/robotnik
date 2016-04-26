@@ -5,6 +5,7 @@ import joystick from './joystick/joystick.js';
 import editor from './editor/editor.js';
 import workshops from './workshops/workshops.js';
 import workshop from './workshop/workshop.js';
+import exercise from './exercise/exercise.js';
 
 export default {
   robotnikMain,
@@ -13,5 +14,6 @@ export default {
   joystick,
   editor,
   workshops,
-  workshop
+  workshop,
+  exercise
 };

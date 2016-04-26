@@ -20,6 +20,18 @@ Workshop.prototype.setExercise = function( num ) {
   this.currentExercise = num;
 }
 
+Workshop.prototype.getExercises = function() {
+  return this.data.exercises;
+}
+
+Workshop.prototype.getExercise = function() {
+  if (this.hasExercises() ) {
+    return this.data.exercises[ this.currentExercise ];
+  } else {
+    return null;
+  }
+}
+
 Workshop.prototype.hasExercises = function() {
   return this.data.exercises && this.data.exercises.length > 0;
 }

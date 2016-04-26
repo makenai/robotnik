@@ -1,0 +1,9 @@
+<h2>Exercise {{vm.workshop.currentExercise + 1}}</h2>
+
+<p>{{vm.exercise.description}}</p>
+
+<ul class="pagination">
+  <li ng-repeat="exercise in vm.workshop.getExercises()" ng-class="{ active: $index == vm.workshop.currentExercise }">
+    <a ui-sref="workshop({workshopId: vm.workshop.getId(), exercise: $index + 1})">{{$index + 1}}</a>
+  </li>
+</ul>

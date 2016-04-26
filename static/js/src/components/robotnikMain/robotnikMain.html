@@ -5,19 +5,19 @@
         <img alt="Robotnik" src="/images/logo-trimmed.png" />
       </a>
     </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a data-target="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Help <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+         <li><a href="http://johnny-five.io/api/" id="docs" target="_blank">Johnny-Five Docs</a></li>
+        </ul>
+      </li>
+      <li><button ng-show="vm.stateParams.workshopId" class="btn btn-primary navbar-btn" ng-click="vm.saveWorkspace()"><i class="fa fa-pencil"></i> Save Workspace</button></li>
+      <li><button ng-show="vm.stateParams.workshopId" class="btn btn-success navbar-btn" ng-click="vm.executeCode()"><i class="fa fa-play"></i> Run Code</button></li>
+    </ul>
   </div>
 </nav>
 
-<!-- <div id="header">
-  <a ui-sref="workshops"><h1 id="logo">Robotnik</h1></a>
-</div> -->
-
-<!-- <div id="controls">
-  <a href="https://github.com/rwaldron/johnny-five/wiki" id="docs" target="_blank">Johnny-Five Docs</a>
-  <button ng-show="vm.stateParams.workshopId" ng-click="vm.executeCode()"><i class="fa fa-play"></i> Execute</button>
-  <button ng-show="vm.stateParams.workshopId" ng-click="vm.saveWorkspace()"><i class="fa faa-pencil"></i> Save</button>
-</div> -->
-
 <div ui-view id="ui-view"></div>
 
-<!-- <running-controls show="vm.showControls"></running-controls> -->
+<running-controls show="vm.showControls"></running-controls>
