@@ -19,16 +19,16 @@ function init() {
 
   Blockly.JavaScript['while_button'] = function(block) {
 
-    var button = block.getFieldValue('BUTTON'),
+    var controller_button = block.getFieldValue('BUTTON'),
       code = Blockly.JavaScript.statementToCode(block, 'DO'),
       otherwise = Blockly.JavaScript.statementToCode(block, 'OTHERWISE'),
       generated = '';
 
     if ( code )
-      generated = generated + "button.on('" + button + "', function() {\n" + code + "})\n";
+      generated = generated + "controller.on('" + controller_button + "', function() {\n" + code + "})\n";
 
     if ( otherwise )
-      generated = generated + "button.off('" + button + "', function() {\n" + otherwise + "})\n";
+      generated = generated + "controller.off('" + controller_button + "', function() {\n" + otherwise + "})\n";
 
     return generated;
   }

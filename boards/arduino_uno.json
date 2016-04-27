@@ -6,7 +6,7 @@
     "before": [
       "var five = require(\"johnny-five\");",
       "var board = new five.Board();",
-      "var button = require('robotnik-controls');",
+      "var controller = require('robotnik-controls');",
       "",
       "board.on(\"ready\", function() {"
     ],
