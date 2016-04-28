@@ -4,12 +4,12 @@
 import _ from 'lodash';
 
 export default function Workshop(data) {
-  this.data = data;
-  if (this.hasExercises()) {
-    this.setExercise(0);
-  } else {
-      throw Error("Workshop has no exercises to run");
-  }
+    this.data = data;
+    if (this.hasExercises()) {
+        this.setExercise(0);
+    } else {
+        throw Error("Workshop has no exercises to run");
+    }
 }
 
 Workshop.prototype.getId = function() {
