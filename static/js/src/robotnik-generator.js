@@ -24,13 +24,6 @@ function init() {
     return generated;
   }
 
-
-/**  Blockly.JavaScript['motor_on'] = function(block) {
-    var motor = block.getFieldValue('MOTOR'),
-      direction = block.getFieldValue('DIRECTION');
-    return motor + '.' + direction + "();\n";
-  }**/
-
   Blockly.JavaScript['if_distance'] = function(block) {
     return 'distance';
   }

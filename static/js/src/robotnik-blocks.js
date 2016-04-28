@@ -15,28 +15,6 @@ function init() {
     }
   };
 
-/**  Blockly.Blocks['servo'] = {
-    init: function() {
-        console.log("initialising servo block");
-        console.log(this);
-      this.setColour(0);
-      this.appendDummyInput()
-          .appendField('the')
-          .appendField(new Blockly.FieldDropdown([
-            ['left', 'left'],
-            ['right', 'right']
-          ]), 'MOTOR')
-          .appendField('motor')
-          .appendField(new Blockly.FieldDropdown([
-            ['goes clockwise', 'cw'],
-            ['goes counter-clockwise', 'ccw'],
-            ['stops', 'stop']
-          ]), 'DIRECTION');
-      this.setNextStatement(true);
-      this.setPreviousStatement(true);
-    }
-  };**/
-
   Blockly.Blocks['while_button'] = {
     init: function() {
       this.setColour(180);
