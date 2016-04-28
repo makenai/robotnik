@@ -21,11 +21,32 @@ export default function Toolbox(workshop) {
 
     // go through each of the components and figure out what categories exist
     // then dedupe them
+    var tempCategories = [];
     this.components.forEach(function(component) {
-        this.categories.push(component.category);
+        tempCategories.push(component.category);
     }.bind(this));
 
-    this.categories = _.uniq(this.categories);
+    tempCategories = _.uniq(tempCategories);
+
+    // now for each category find all the component classes that are relevant
+    // and then add to the category deduplicated also.
+    tempCategories.forEach(category => {
+        let tmpcomponents = _.filter(this.components, {category: category});
+        tmpcomponents = _.uniq(_.map(tmpcomponents, function(o) {
+            // check to see if the components have types and if they do then
+            // we'll need to return a composite component type
+            if (o.config != undefined && o.config.type != undefined) {
+                return (o.class + "_" + o.config.type);
+            } else {
+                return (o.class);
+            }
+        }));
+
+        this.categories.push({
+            name: category,
+            componentClasses: tmpcomponents,
+        });
+    });
 
     Object.defineProperty(this, "xml", {
         get: function() {
@@ -38,7 +59,6 @@ export default function Toolbox(workshop) {
 function generateXML(toolbox) {
     // this generates the actual xml - used to keep the Toolbox object with a
     // small surface
-    console.log("getting XML for toolbox");
     var blocks = [];
     blocks.push(makeCategory({
         name: 'Logic',
@@ -47,8 +67,8 @@ function generateXML(toolbox) {
 
     toolbox.categories.forEach(function(category) {
         blocks.push(makeCategory({
-            name: category[0].toUpperCase() + category.slice(1),
-            blocks: _.filter(toolbox.components, {category: category}),
+            name: category.name[0].toUpperCase() + category.name.slice(1),
+            blocks: category.componentClasses,
         }));
     });
 
@@ -59,25 +79,13 @@ function makeBlock(component) {
     // takes a component and makes a block of the appropriate type
 
     let block_name = "";
-    let field = "";
     if (typeof component == "string") {
-        block_name = component;
+        block_name = component.toLowerCase();
     } else {
-        // AF: we may need to do more work here in the future because simply
-        // using the class name as the block may not be sufficient (eg in
-        // cases where we have multiple blocks per component type)
         block_name = component.class.toLowerCase();
-        field = component.name;
-        // TODO: Deal with the case where we have multiple cases of the one
     }
 
-    let block_fragment = '<block type="' + block_name + '">';
-    if (field != "") {
-        block_fragment += '<field name="VAR">LED</field>';
-    }
-    block_fragment += '</block>';
-
-    return block_fragment;
+    return '<block type="' + block_name + '"></block>';
 }
 
 function makeCategory(category) {

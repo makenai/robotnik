@@ -40,10 +40,11 @@ export default function($timeout, $stateParams, code, blockly, Workspaces) {
     },
     link: function(scope, element) {
 
-      var toolbox = new Toolbox(scope.model);
+      var workshop = scope.model;
+      var toolbox = new Toolbox(workshop);
       console.log(toolbox.xml);
       $timeout(function() {
-        blockly.init(element.find('#blockly')[0], toolbox.xml);
+        blockly.init(element.find('#blockly')[0], toolbox.xml, workshop);
       }, 0, false);
 
       $( window ).resize(function() {

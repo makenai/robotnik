@@ -5,11 +5,19 @@
   "board": "uno",
   "components": [
     {
-      "name": "led",
+      "name": "led13",
       "class": "Led",
       "category": "actuator",
       "config": {
         "pin": 13
+      }
+    },
+    {
+      "name": "led3",
+      "class": "Led",
+      "category": "actuator",
+      "config": {
+        "pin": 3
       }
     },
     {
@@ -31,6 +39,15 @@
       }
     },
     {
+      "name": "liftServo",
+      "class": "Servo",
+      "category": "actuator",
+      "config": {
+        "pin": 8,
+        "type": "standard"
+      }
+    },
+    {
       "name": "button",
       "class": "Button",
       "category": "sensor",
@@ -43,7 +60,7 @@
     {
       "description": "First, try to make an LED blink when you push a button.",
       "components": [
-        "led", "button", "leftServo"
+        "led13", "led3", "leftServo", "rightServo", "liftServo"
       ]
     },
     {

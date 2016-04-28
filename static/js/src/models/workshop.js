@@ -62,4 +62,25 @@ Workshop.prototype.getComponents = function() {
   }
 
   return exerciseComponents;
-}
+};
+
+Workshop.prototype.getComponentClasses = function() {
+    // gets a list of all the Johnny Five component classes that are represented
+    // in this exercise
+
+    // get the exercise components and then dedupe the classes from them
+    let exerciseComponents = this.getComponents();
+
+    let classList = [];
+    exerciseComponents.forEach(function(c) {
+        classList.push(c.class);
+    });
+
+    return _.uniq(classList);
+};
+
+Workshop.prototype.getComponentsFromClass = function(classtype) {
+    // returns an array of all components of the type of class given
+
+    return _.filter(this.getComponents(), {class: classtype});
+};

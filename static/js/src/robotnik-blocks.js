@@ -15,45 +15,7 @@ function init() {
     }
   };
 
-  Blockly.Blocks['led'] = {
-      init: function() {
-          this.setColour(120);
-          this.appendDummyInput()
-            .appendField('LED')
-            .appendField(new Blockly.FieldDropdown([
-                        ['turns on', 'on'],
-                        ['turns off', 'off'],
-                        ['blinks', 'blink'],
-                        ['stop', 'stop'],
-            ]), 'LED');
-          this.setInputsInline(true);
-          this.setNextStatement(true);
-          this.setPreviousStatement(true);
-      },
-      onchange: function(e) {
-          // this happens when the interface changes.
-          if (this.getFieldValue('LED') == "blink") {
-              // use the input list to determine how many controllable
-              // inputs there are. 1 means it's just the dropdown
-              // 2 or more means there are other fields added.
-              if (this.inputList.length == 1) {
-                  // add the blink items to the block
-                  console.log(this);
-                  this.appendDummyInput("BLINK")
-                      .appendField('every')
-                      .appendField(new Blockly.FieldTextInput('1000'), 'BLINKSPEED')
-                      .appendField('milliseconds');
-              }
-          } else {
-              if (this.inputList.length > 1) {
-                  // remove the blink items we've previously added.
-                  this.removeInput("BLINK");
-              }
-          }
-      },
-  };
-
-  Blockly.Blocks['servo'] = {
+/**  Blockly.Blocks['servo'] = {
     init: function() {
         console.log("initialising servo block");
         console.log(this);
@@ -73,7 +35,7 @@ function init() {
       this.setNextStatement(true);
       this.setPreviousStatement(true);
     }
-  };
+  };**/
 
   Blockly.Blocks['while_button'] = {
     init: function() {
