@@ -5,6 +5,7 @@ import robotnikGenerator from '../robotnik-generator.js';
 
 import led from '../blocks/led.js';
 import servo from '../blocks/servo.js';
+import motor from '../blocks/motor.js';
 
 export default function(Workspaces) {
 

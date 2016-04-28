@@ -39,6 +39,18 @@
       }
     },
     {
+      "name": "leftmotor",
+      "class": "Motor",
+      "category": "actuator",
+      "config": {
+        "pins": {
+			"pwm": 9,
+			"dir": 8
+        },
+        "invertPWM": true
+      }
+    },
+    {
       "name": "liftServo",
       "class": "Servo",
       "category": "actuator",
@@ -60,7 +72,7 @@
     {
       "description": "First, try to make an LED blink when you push a button.",
       "components": [
-        "led13", "led3", "leftServo", "rightServo", "liftServo"
+        "led13", "led3", "leftServo", "rightServo", "leftmotor"
       ]
     },
     {
