@@ -40,6 +40,45 @@ motor.prototype.blocks = function() {
             },
             onchange: function(e) {
                 // this happens when the interface changes.
+
+                // update block with speed values if needed.
+                if (this.getFieldValue('motorstate') == "forward" ||
+                        this.getFieldValue('motorstate') == "reverse") {
+                    // use the input list to determine how many controllable
+                    // inputs there are. 1 means it's just the dropdown
+                    // 2 or more means there are other fields added.
+                    let addinput = false;
+                    if (this.inputList.length > 1) {
+                        if (this.inputList[1].name != "motorspeedcontainer") {
+                            this.removeInput(this.inputList[1].name);
+                            addinput = true;
+                        }
+                    } else {
+                        addinput = true;
+                    }
+
+                    if (addinput) {
+                        // add the blink items to the block
+                        this.appendDummyInput("motorspeedcontainer")
+                            .appendField('and set speed to')
+                            .appendField(new Blockly.FieldTextInput('1'), 'motorspeed')
+                    } else {
+                        // item already exists so do some range checks
+                        let speed = parseFloat(this.getFieldValue('motorspeed'));
+                        if (speed > 1 || speed < 0) {
+                            this.setWarningText("Speed must be between 0-1 (1 is full speed)");
+                        } else if (isNaN(speed)) {
+                            this.setWarningText("Speed value needs to be a number");
+                        } else {
+                            this.setWarningText(null);
+                        }
+                    }
+                } else {
+                    if (this.inputList.length > 1) {
+                        // remove the conainer items we've previously added.
+                        this.removeInput(this.inputList[1].name);
+                    }
+                }
             },
         },
     };
@@ -51,7 +90,11 @@ motor.prototype.generators = function() {
 
         var selectedMotor = block.getFieldValue('motorobject');
         var motorState = block.getFieldValue('motorstate');
-        return selectedMotor + '.' + motorState + '();\n';
+        var speed = "";
+        if (motorState == "forward" || motorState == "reverse") {
+            speed = block.getFieldValue('motorspeed');
+        }
+        return selectedMotor + '.' + motorState + '(' + speed + ');\n';
     }
 
     return {
