@@ -64,7 +64,7 @@
       "class": "Button",
       "category": "sensor",
       "config": {
-        "pin": "A0"
+        "pin": "5"
       }
     }
   ],
@@ -72,7 +72,7 @@
     {
       "description": "First, try to make an LED blink when you push a button.",
       "components": [
-        "led13", "led3", "leftServo", "rightServo", "leftmotor"
+        "led13", "led3", "leftServo", "rightServo", "leftmotor", "button"
       ]
     },
     {

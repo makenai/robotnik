@@ -3,9 +3,10 @@
 import robotnikBlocks from '../robotnik-blocks.js';
 import robotnikGenerator from '../robotnik-generator.js';
 
+import button from '../blocks/button.js';
 import led from '../blocks/led.js';
-import servo from '../blocks/servo.js';
 import motor from '../blocks/motor.js';
+import servo from '../blocks/servo.js';
 
 export default function(Workspaces) {
 
