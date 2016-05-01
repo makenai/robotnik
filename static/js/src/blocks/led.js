@@ -15,6 +15,10 @@ export default function led(opts) {
 
     this.components = opts.components || null;
 
+    // used to add the returned block definitions to the right categories
+    this.categories = {
+        "led": "actuator",
+    };
     // this is for the dropdown selector.
     this.components.forEach(led => {
         ledSelector.push([

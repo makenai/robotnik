@@ -15,6 +15,10 @@ export default function motor(opts) {
 
     this.components = opts.components || null;
 
+    // used to add the returned block definitions to the right categories
+    this.categories = {
+        "motor": "actuator",
+    };
     // this is for the dropdown selector.
     this.components.forEach(motor => {
         motorSelector.push([

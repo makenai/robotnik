@@ -4,27 +4,34 @@ export default {
 
 function init() {
 
-  Blockly.JavaScript['console_log'] = function(block) {
-    return "console.log('" + block.getFieldValue('TEXT') + "');\n";
-  }
+    Blockly.JavaScript['console_log'] = function(block) {
+        return "console.log('" + block.getFieldValue('TEXT') + "');\n";
+    }
 
-  Blockly.JavaScript['while_button'] = function(block) {
+    Blockly.JavaScript['console_log_value'] = function(block) {
+        var genCode = Blockly.JavaScript.statementToCode(block, 'consolevalue') ||
+            Blockly.JavaScript.valueToCode(block, 'consolevalue') || '';
 
-    var controller_button = block.getFieldValue('BUTTON'),
-      code = Blockly.JavaScript.statementToCode(block, 'DO'),
-      otherwise = Blockly.JavaScript.statementToCode(block, 'OTHERWISE'),
-      generated = '';
+        return "console.log(" + genCode + ");\n";
+    }
 
-    if ( code )
-      generated = generated + "controller.on('" + controller_button + "', function() {\n" + code + "})\n";
+    Blockly.JavaScript['while_button'] = function(block) {
 
-    if ( otherwise )
-      generated = generated + "controller.off('" + controller_button + "', function() {\n" + otherwise + "})\n";
+        var controller_button = block.getFieldValue('BUTTON'),
+        code = Blockly.JavaScript.statementToCode(block, 'DO'),
+        otherwise = Blockly.JavaScript.statementToCode(block, 'OTHERWISE'),
+        generated = '';
 
-    return generated;
-  }
+        if ( code )
+            generated = generated + "controller.on('" + controller_button + "', function() {\n" + code + "})\n";
 
-  Blockly.JavaScript['if_distance'] = function(block) {
-    return 'distance';
-  }
+        if ( otherwise )
+            generated = generated + "controller.off('" + controller_button + "', function() {\n" + otherwise + "})\n";
+
+        return generated;
+    }
+
+    Blockly.JavaScript['if_distance'] = function(block) {
+        return 'distance';
+    }
 }

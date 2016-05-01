@@ -4,8 +4,6 @@
 
 import _ from 'lodash';
 
-var logic_blocks = ['console_log', 'while_button'];
-
 export default function Toolbox(workshop) {
     // takes a workshop as part of declaration so it can then process them.
     if (workshop == undefined) {
@@ -16,59 +14,26 @@ export default function Toolbox(workshop) {
         return new Toolbox(workshop);
     }
 
-    this.categories = [];
     this.components = workshop.getComponents();
-
-    // go through each of the components and figure out what categories exist
-    // then dedupe them
-    var tempCategories = [];
-    this.components.forEach(function(component) {
-        tempCategories.push(component.category);
-    }.bind(this));
-
-    tempCategories = _.uniq(tempCategories);
-
-    // now for each category find all the component classes that are relevant
-    // and then add to the category deduplicated also.
-    tempCategories.forEach(category => {
-        let tmpcomponents = _.filter(this.components, {category: category});
-        tmpcomponents = _.uniq(_.map(tmpcomponents, function(o) {
-            // check to see if the components have types and if they do then
-            // we'll need to return a composite component type
-            if (o.config != undefined && o.config.type != undefined) {
-                return (o.class + "_" + o.config.type);
-            } else {
-                return (o.class);
-            }
-        }));
-
-        this.categories.push({
-            name: category,
-            componentClasses: tmpcomponents,
-        });
-    });
+    this.categories = workshop.getBlocks();
 
     Object.defineProperty(this, "xml", {
         get: function() {
             return generateXML(this);
         }
     });
-    console.log(this);
 };
 
 function generateXML(toolbox) {
     // this generates the actual xml - used to keep the Toolbox object with a
     // small surface
     var blocks = [];
-    blocks.push(makeCategory({
-        name: 'Logic',
-        blocks: logic_blocks,
-    }));
 
-    toolbox.categories.forEach(function(category) {
+    //toolbox.categories.forEach(function(category) {
+    Object.keys(toolbox.categories).forEach(category => {
         blocks.push(makeCategory({
-            name: category.name[0].toUpperCase() + category.name.slice(1),
-            blocks: category.componentClasses,
+            name: category[0].toUpperCase() + category.slice(1),
+            blocks: toolbox.categories[category].blocks,
         }));
     });
 
@@ -89,7 +54,8 @@ function makeBlock(component) {
 }
 
 function makeCategory(category) {
-    // category is an object with a name and an array of components to be added.
+    // category is an object with a name to add to the toolbox and an
+    // array of blocks which are to be added in the category
 
     var xmlfragment = [];
     category.blocks.forEach(function(block) {

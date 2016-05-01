@@ -15,6 +15,18 @@ function init() {
     }
   };
 
+  Blockly.Blocks['console_log_value'] = {
+      init: function() {
+          this.setColour(320);
+          this.appendDummyInput()
+              .appendField('console.log')
+              this.appendValueInput('consolevalue');
+          this.setInputsInline(true);
+          this.setNextStatement(true);
+          this.setPreviousStatement(true);
+      }
+  };
+
   Blockly.Blocks['while_button'] = {
     init: function() {
       this.setColour(180);

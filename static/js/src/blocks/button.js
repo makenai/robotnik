@@ -15,6 +15,10 @@ export default function button(opts) {
 
     this.components = opts.components || null;
 
+    // used to add the returned block definitions to the right categories
+    this.categories = {
+        "button": "sensor",
+    };
     // this is for the dropdown selector.
     this.components.forEach(button => {
         buttonSelector.push([

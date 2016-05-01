@@ -20,6 +20,11 @@ export default function servo(opts) {
 
     this.components = opts.components || null;
 
+    // used to add the returned block definitions to the right categories
+    this.categories = {
+        "continuous": "actuator",
+        "standard": "actuator",
+    };
     // this is for the dropdown selector.
     this.components.forEach(servo => {
         // get type and push it onto the right group.

@@ -7,7 +7,6 @@
     {
       "name": "led13",
       "class": "Led",
-      "category": "actuator",
       "config": {
         "pin": 13
       }
@@ -15,7 +14,6 @@
     {
       "name": "led3",
       "class": "Led",
-      "category": "actuator",
       "config": {
         "pin": 3
       }
@@ -23,7 +21,6 @@
     {
       "name": "leftServo",
       "class": "Servo",
-      "category": "actuator",
       "config": {
         "pin": 7,
         "type": "continuous"
@@ -32,7 +29,6 @@
     {
       "name": "rightServo",
       "class": "Servo",
-      "category": "actuator",
       "config": {
         "pin": 11,
         "type": "continuous"
@@ -41,7 +37,6 @@
     {
       "name": "leftmotor",
       "class": "Motor",
-      "category": "actuator",
       "config": {
         "pins": {
 			"pwm": 9,
@@ -53,18 +48,25 @@
     {
       "name": "liftServo",
       "class": "Servo",
-      "category": "actuator",
       "config": {
         "pin": 8,
         "type": "standard"
       }
     },
     {
-      "name": "button",
-      "class": "Button",
-      "category": "sensor",
+      "name": "linesensor",
+      "class": "Sensor",
       "config": {
-        "pin": "5"
+        "pin": "A0",
+        "freq": 500
+      }
+    },
+    {
+      "name": "linesensor2",
+      "class": "Sensor",
+      "config": {
+        "pin": "A1",
+        "freq": 500
       }
     }
   ],
@@ -72,7 +74,37 @@
     {
       "description": "First, try to make an LED blink when you push a button.",
       "components": [
-        "led13", "led3", "leftServo", "rightServo", "leftmotor", "button"
+        "led13", "led3", "leftServo", "rightServo", "linesensor", "linesensor2"
+      ],
+      "exercise_blocks" : [
+          {
+              "name": "logic_boolean",
+              "category": "logic"
+          },
+          {
+              "name": "logic_compare",
+              "category": "logic"
+          },
+          {
+              "name": "while_button",
+              "category": "logic"
+          },
+          {
+              "name": "logic_compare",
+              "category": "logic"
+          },
+          {
+              "name": "console_log_value",
+              "category": "value"
+          },
+          {
+              "name": "math_number",
+              "category": "value"
+          },
+          {
+              "name": "text",
+              "category": "value"
+          }
       ]
     },
     {
