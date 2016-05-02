@@ -26,6 +26,7 @@ export default function servo(opts) {
         "standard": "actuator",
     };
     // this is for the dropdown selector.
+    servoSelector = []; // reset between exercises
     this.components.forEach(servo => {
         // get type and push it onto the right group.
         let stype = servo.config.type || null;

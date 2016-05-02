@@ -20,6 +20,7 @@ export default function motor(opts) {
         "motor": "actuator",
     };
     // this is for the dropdown selector.
+    motorSelector = []; // reset between exercises.
     this.components.forEach(motor => {
         motorSelector.push([
             motor.name,

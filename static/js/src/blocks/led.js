@@ -20,6 +20,7 @@ export default function led(opts) {
         "led": "actuator",
     };
     // this is for the dropdown selector.
+    ledSelector = [];
     this.components.forEach(led => {
         ledSelector.push([
             led.name,

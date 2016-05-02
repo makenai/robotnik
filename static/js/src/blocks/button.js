@@ -20,6 +20,7 @@ export default function button(opts) {
         "button": "sensor",
     };
     // this is for the dropdown selector.
+    buttonSelector = []; // reset this between exercises
     this.components.forEach(button => {
         buttonSelector.push([
             button.name,
