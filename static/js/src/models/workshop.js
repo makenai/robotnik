@@ -10,6 +10,7 @@ import motor from '../blocks/motor.js';
 import ledrgb from '../blocks/led.rgb.js';
 import servo from '../blocks/servo.js';
 import sensor from '../blocks/sensor.js';
+import thermometer from '../blocks/thermometer.js';
 
 export default function Workshop(data) {
     this.data = data;

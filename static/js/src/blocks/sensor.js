@@ -85,8 +85,7 @@ sensor.prototype.generators = function() {
     var value_generator = function(block) {
         var selectedComponent = block.getFieldValue('sensorvalueobject');
         var generatedCode = selectedComponent + '.value';
-        console.log(generatedCode);
-        return generatedCode;
+        return [generatedCode, Blockly.JavaScript.ORDER_ATOMIC];
     };
 
 
