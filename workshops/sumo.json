@@ -5,17 +5,14 @@
   "board": "uno",
   "components": [
     {
-      "name": "led13",
-      "class": "Led",
+      "name": "RGBled",
+      "class": "Led.RGB",
       "config": {
-        "pin": 13
-      }
-    },
-    {
-      "name": "led3",
-      "class": "Led",
-      "config": {
-        "pin": 3
+        "pins": {
+            "red": 10,
+            "green": 3,
+            "blue": 5
+        }
       }
     },
     {
@@ -74,7 +71,7 @@
     {
       "description": "First, try to make an LED blink when you push a button.",
       "components": [
-        "led13", "led3", "leftServo", "rightServo", "linesensor", "linesensor2"
+        "RGBled", "leftServo", "rightServo", "linesensor", "linesensor2"
       ],
       "exercise_blocks" : [
           {

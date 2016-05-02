@@ -29,7 +29,6 @@ function generateXML(toolbox) {
     // small surface
     var blocks = [];
 
-    //toolbox.categories.forEach(function(category) {
     Object.keys(toolbox.categories).forEach(category => {
         blocks.push(makeCategory({
             name: category[0].toUpperCase() + category.slice(1),

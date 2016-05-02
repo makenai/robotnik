@@ -7,6 +7,7 @@ import _ from 'lodash';
 import button from '../blocks/button.js';
 import led from '../blocks/led.js';
 import motor from '../blocks/motor.js';
+import ledrgb from '../blocks/led.rgb.js';
 import servo from '../blocks/servo.js';
 import sensor from '../blocks/sensor.js';
 
@@ -99,9 +100,12 @@ Workshop.prototype.getBlocks = function() {
 
     this.getComponentClasses().forEach(classname => {
 
-        let cname = classname.toLowerCase(); // J5 uses capitalised names
+        // J5 uses capitalised names and has '.'s in them which we need to get
+        // rid of so we just take them out entirely.
+        let cname = classname.toLowerCase().replace('.','');
+
         // get the robotnik component as well as any potential generators
-        // and blocks we may be using.
+        // and blocks we wil be using.
         let component = eval(cname);
         // we pass in the actual components from this exercise so they can
         // be consolidated into one block object.
