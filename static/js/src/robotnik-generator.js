@@ -4,13 +4,8 @@ export default {
 
 function init() {
 
-    Blockly.JavaScript['console_log'] = function(block) {
-        return "console.log('" + block.getFieldValue('TEXT') + "');\n";
-    }
-
     Blockly.JavaScript['console_log_value'] = function(block) {
-        var genCode = Blockly.JavaScript.statementToCode(block, 'consolevalue') ||
-            Blockly.JavaScript.valueToCode(block, 'consolevalue') || '';
+        var genCode = Blockly.JavaScript.valueToCode(block, 'consolevalue') || '\'\'';
 
         return "console.log(" + genCode + ");\n";
     }
