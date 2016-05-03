@@ -66,12 +66,12 @@ motor.prototype.blocks = function() {
                         // add the blink items to the block
                         this.appendDummyInput("motorspeedcontainer")
                             .appendField('and set speed to')
-                            .appendField(new Blockly.FieldTextInput('1'), 'motorspeed')
+                            .appendField(new Blockly.FieldTextInput('150'), 'motorspeed')
                     } else {
                         // item already exists so do some range checks
-                        let speed = parseFloat(this.getFieldValue('motorspeed'));
-                        if (speed > 1 || speed < 0) {
-                            this.setWarningText("Speed must be between 0-1 (1 is full speed)");
+                        let speed = parseInt(this.getFieldValue('motorspeed'));
+                        if (speed > 255 || speed < 0) {
+                            this.setWarningText("Speed must be between 0-255 (255 is full speed)");
                         } else if (isNaN(speed)) {
                             this.setWarningText("Speed value needs to be a number");
                         } else {
