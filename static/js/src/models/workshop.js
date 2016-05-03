@@ -51,8 +51,8 @@ Workshop.prototype.getBlocks = function() {
     // get the list of blocks defined in the exercise.
     // TODO: We may need to add blocks from the workshop and maybe some
     // default ones to this list as well in the future.
-    let workshopBlocks = this.data.workshop_blocks || null;
-    let exerciseBlocks = this.data.exercises[this.currentExercise].exercise_blocks || null;
+    let workshopBlocks = this.data.workshop_blocks || [];
+    let exerciseBlocks = this.data.exercises[this.currentExercise].exercise_blocks || [];
 
     let categories = {};
     let components = this.getComponents();
