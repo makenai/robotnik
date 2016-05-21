@@ -6,6 +6,12 @@ var CodeRunner = require('./lib/codeRunner');
 
 var codeRunner = new CodeRunner();
 
+codeRunner.on('consoledata', function(data){
+    console.log("This event has bubbled to the webserver");
+    console.log(data);
+    io.sockets.emit('consoledata', data);
+});
+
 app.use(express.static('static'));
 
 io.on('connection', function(socket) {
