@@ -6,9 +6,9 @@ var CodeRunner = require('./lib/codeRunner');
 
 var codeRunner = new CodeRunner();
 
+// the coderunner can emit events which we then broadcast
+// to the web client.
 codeRunner.on('consoledata', function(data){
-    console.log("This event has bubbled to the webserver");
-    console.log(data);
     io.sockets.emit('consoledata', data);
 });
 

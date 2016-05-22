@@ -54,6 +54,7 @@
     "electron-prebuilt": "^0.37.5",
     "express": "^4.13.4",
     "font-awesome": "^4.5.0",
+    "intercept-stdout": "^0.1.2",
     "johnny-five": "^0.9.38",
     "jquery": "^2.1.4",
     "js-beautify": "^1.5.5",
@@ -61,7 +62,8 @@
     "pouchdb": "^3.4.0",
     "pouchdb-find": "^0.3.4",
     "serialport": "^2.1.0",
-    "socket.io": "^1.4.5"
+    "socket.io": "^1.4.5",
+    "strip-ansi": "^3.0.1"
   },
   "devDependencies": {
     "es6ify": "^1.6.0",
