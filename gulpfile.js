@@ -26,11 +26,11 @@ gulp.task('blockly', function () {
     .on('error', console.log);
 });
 
-gulp.task('css', function() {
+gulp.task('bootstrap', function() {
     return gulp.src([
-        './node_modules/bootstrap/dist/css/bootstrap.min.css'
+        './node_modules/bootstrap/dist/**'
     ])
-    .pipe(gulp.dest('./static/vendor/bootstrap/dist/css/'))
+    .pipe(gulp.dest('./static/vendor/bootstrap/dist/'))
     .on('error', console.log);
 });
 
@@ -114,4 +114,4 @@ gulp.task('watch', function() {
 
 });
 
-gulp.task('default', ['icons', 'blockly', 'css', 'fonts', 'boards', 'workshops', 'vendor', 'bundle']);
+gulp.task('default', ['icons', 'blockly', 'bootstrap', 'fonts', 'boards', 'workshops', 'vendor', 'bundle']);

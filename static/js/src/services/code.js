@@ -15,13 +15,13 @@ function code(commands, blockly, Boards) {
   }
 
   function getComponentCode(workshop) {
-    if (!workshop.components) return '';
 
-    var componentLines = [
+    let components = workshop.getComponents();
+    let componentLines = [
       "// Initialize Components"
     ];
 
-    workshop.components.forEach(function(component) {
+    components.forEach(function(component) {
       componentLines.push('var ' + component.name + ' = new five.' + component.class + '(' + JSON.stringify(component.config) + ');');
     });
 

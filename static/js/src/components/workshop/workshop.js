@@ -11,8 +11,8 @@ export default function($timeout, $stateParams, code, blockly, Workspaces) {
     },
     controller: function($scope) {
       this.workshop = $scope.model;
-      this.exerciseId = $stateParams.exercise;
-      this.workshop.setExercise( this.exerciseId - 1 );
+      this.exerciseId = $stateParams.exercise - 1; // urls are kept pretty
+      this.workshop.setExercise( this.exerciseId);
       this.selected = 'blocks';
       this.selectBlocks = selectBlocks;
       this.selectCode = selectCode;
@@ -40,7 +40,8 @@ export default function($timeout, $stateParams, code, blockly, Workspaces) {
     },
     link: function(scope, element) {
 
-      var toolbox = Toolbox.forWorkshop( scope.model );
+      var workshop = scope.model;
+      var toolbox = new Toolbox(workshop);
       $timeout(function() {
         blockly.init(element.find('#blockly')[0], toolbox);
       }, 0, false);

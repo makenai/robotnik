@@ -5,13 +5,6 @@
   "board": "uno",
   "components": [
     {
-      "name": "led",
-      "class": "Led",
-      "config": {
-        "pin": 13
-      }
-    },
-    {
       "name": "leftServo",
       "class": "Servo",
       "config": {
@@ -28,10 +21,38 @@
       }
     },
     {
-      "name": "button",
-      "class": "Button",
+      "name": "leftmotor",
+      "class": "Motor",
       "config": {
-        "pin": "A0"
+        "pins": {
+			"pwm": 9,
+			"dir": 8
+        },
+        "invertPWM": true
+      }
+    },
+    {
+      "name": "liftServo",
+      "class": "Servo",
+      "config": {
+        "pin": 8,
+        "type": "standard"
+      }
+    },
+    {
+      "name": "linesensor",
+      "class": "Sensor",
+      "config": {
+        "pin": "A0",
+        "freq": 500
+      }
+    },
+    {
+      "name": "linesensor2",
+      "class": "Sensor",
+      "config": {
+        "pin": "A1",
+        "freq": 500
       }
     }
   ],
@@ -39,7 +60,37 @@
     {
       "description": "First, try to make an LED blink when you push a button.",
       "components": [
-        "led", "button"
+        "leftServo", "rightServo", "linesensor", "linesensor2"
+      ],
+      "exercise_blocks" : [
+          {
+              "name": "logic_boolean",
+              "category": "logic"
+          },
+          {
+              "name": "logic_compare",
+              "category": "logic"
+          },
+          {
+              "name": "while_button",
+              "category": "logic"
+          },
+          {
+              "name": "logic_compare",
+              "category": "logic"
+          },
+          {
+              "name": "console_log_value",
+              "category": "value"
+          },
+          {
+              "name": "math_number",
+              "category": "value"
+          },
+          {
+              "name": "text",
+              "category": "value"
+          }
       ]
     },
     {
