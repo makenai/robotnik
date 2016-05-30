@@ -41,7 +41,6 @@ export default function(commands) {
             var consolestr = data.data;
 
             if (consolestr.search("Initialized") >= 0) {
-                console.log(this);
                 this.runningStatus = "Now running";
                 $scope.$apply();
             }
