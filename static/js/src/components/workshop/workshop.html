@@ -1,17 +1,13 @@
-<tabset>
-  <tab heading="Blocks" select="vm.selectBlocks()">
-    <div id="blockly"></div>
-  </tab>
-  <tab heading="Code" select="vm.selectCode()">
-  	<editor code="vm.code"></editor>
-  </tab>
-</tabset>
-
-<xml id="toolbox" style="display: none">
-  <block type="console_log"></block>
-  <block type="while_button"></block>
-  <block type="led_on"></block>
-  <block type="led_off"></block>
-  <block type="motor_on"></block>
-  <block type="if_distance"></block>
-</xml>
+<div class="col-md-3" ng-show="vm.workshop.hasExercises()">
+  <exercise workshop="vm.workshop"></exercise>
+</div>
+<div ng-class="vm.workshop.hasExercises() ? 'col-md-9' : 'col-md-12'">
+  <tabset>
+    <tab heading="Blocks" select="vm.selectBlocks()">
+      <div id="blockly"></div>
+    </tab>
+    <tab heading="Code" select="vm.selectCode()">
+    	<editor code="vm.code"></editor>
+    </tab>
+  </tabset>
+</div>

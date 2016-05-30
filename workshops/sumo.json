@@ -1,14 +1,11 @@
 {
+  "_id": "makerland",
   "title": "Makerland Workshop",
   "description": "This is a workshop for Makerland Conference using a sumobot kit with an LED and a proximity sensor.",
+  "board": "uno",
   "components": [
     {
-      "class": "Led",
-      "config": {
-        "pin": 13
-      }
-    },
-    {
+      "name": "leftServo",
       "class": "Servo",
       "config": {
         "pin": 7,
@@ -16,6 +13,7 @@
       }
     },
     {
+      "name": "rightServo",
       "class": "Servo",
       "config": {
         "pin": 11,
@@ -23,18 +21,83 @@
       }
     },
     {
+      "name": "leftmotor",
+      "class": "Motor",
+      "config": {
+        "pins": {
+			"pwm": 9,
+			"dir": 8
+        },
+        "invertPWM": true
+      }
+    },
+    {
+      "name": "liftServo",
+      "class": "Servo",
+      "config": {
+        "pin": 8,
+        "type": "standard"
+      }
+    },
+    {
+      "name": "linesensor",
       "class": "Sensor",
       "config": {
-        "pin": "A0"
+        "pin": "A0",
+        "freq": 500
+      }
+    },
+    {
+      "name": "linesensor2",
+      "class": "Sensor",
+      "config": {
+        "pin": "A1",
+        "freq": 500
       }
     }
   ],
   "exercises": [
     {
-      "text": "First, try to make an LED blink when you push a button."
+      "description": "First, try to make an LED blink when you push a button.",
+      "components": [
+        "leftServo", "rightServo", "linesensor", "linesensor2"
+      ],
+      "exercise_blocks" : [
+          {
+              "name": "logic_boolean",
+              "category": "logic"
+          },
+          {
+              "name": "logic_compare",
+              "category": "logic"
+          },
+          {
+              "name": "while_button",
+              "category": "logic"
+          },
+          {
+              "name": "logic_compare",
+              "category": "logic"
+          },
+          {
+              "name": "console_log_value",
+              "category": "value"
+          },
+          {
+              "name": "math_number",
+              "category": "value"
+          },
+          {
+              "name": "text",
+              "category": "value"
+          }
+      ]
     },
     {
-      "text": "Now make a motor turn clockwise"
+      "description": "Now make a motor turn clockwise, when you press the button",
+      "components": [
+        "leftServo", "button"
+      ]
     }
   ]
 }

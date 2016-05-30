@@ -1,0 +1,17 @@
+{
+  "_id": "uno",
+  "name": "Arduino Uno",
+  "default": true,
+  "code": {
+    "before": [
+      "var five = require(\"johnny-five\");",
+      "var board = new five.Board();",
+      "var controller = require('robotnik-controls');",
+      "",
+      "board.on(\"ready\", function() {"
+    ],
+    "after": [
+      "});"
+    ]
+  }
+}

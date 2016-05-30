@@ -18,7 +18,7 @@ function routes($stateProvider, $urlRouterProvider) {
       }
     })
     .state('workshop', {
-      url: '/workshops/:workshopId',
+      url: '/workshops/:workshopId/:exercise',
       template: '<workshop model="model"></workshop>',
       controller: defaultModelController,
       resolve: {

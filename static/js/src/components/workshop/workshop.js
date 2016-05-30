@@ -1,18 +1,24 @@
 import template from './workshop.html';
+import Toolbox from '../../lib/toolbox';
 
 export default function($timeout, $stateParams, code, blockly, Workspaces) {
   return {
     template: template,
     controllerAs: 'vm',
+    restrict: 'E',
     scope: {
       model: '='
     },
     controller: function($scope) {
       this.workshop = $scope.model;
+      this.exerciseId = $stateParams.exercise - 1; // urls are kept pretty
+      this.workshop.setExercise( this.exerciseId);
       this.selected = 'blocks';
       this.selectBlocks = selectBlocks;
       this.selectCode = selectCode;
-      restoreWorkspace( this.workshop._id );
+      restoreWorkspace( this.workshop.getId() );
+
+      code.setWorkshop( this.workshop );
 
       function selectBlocks() {
         this.selected = 'blocks';
@@ -34,8 +40,10 @@ export default function($timeout, $stateParams, code, blockly, Workspaces) {
     },
     link: function(scope, element) {
 
+      var workshop = scope.model;
+      var toolbox = new Toolbox(workshop);
       $timeout(function() {
-        blockly.init(element.find('#blockly')[0], element.find('#toolbox')[0]);
+        blockly.init(element.find('#blockly')[0], toolbox);
       }, 0, false);
 
       $( window ).resize(function() {

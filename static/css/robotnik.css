@@ -1,70 +1,15 @@
-html, body {
-  background-color: #fff;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  height: 100%;
-  font-family: sans-serif;
+.navbar {
+  min-height: 60px;
+  margin-bottom: 5px;
 }
 
-.blocklySvg {
-  height: 100%;
-  width: 100%;
+.navbar-brand img {
+  margin-top: -10px;
+  height: 50px;
 }
 
-#header {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-#logo {
-  width: 400px;
-  height: 100px;
-  text-indent: -9999px;
-  background: url(../images/logo.png);
-  margin: 0;
-  padding: 0;
-}
-
-#controls {
-  position: absolute;
-  top: 15px;
-  right: 0;
-  padding: 10px;
-}
-
-#controls button,  #controls a {
-  font-size: 20px;
-  padding: 10px;
-  border: 1px solid black;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-}
-
-#docs {
-  color: black;
-  background-color: yellow;
-  text-decoration: none;
-}
-
-#controls button:hover {
-  color: black;
-}
-
-#execute {
-  color: white;
-  background-color: #00a651;
-}
-
-#ui-view {
-  margin-top: 60px;
-}
-
-ul.nav-tabs {
-  margin-left: 400px;
-  margin-bottom: -1px;
+.navbar-btn {
+  margin-right: 10px;
 }
 
 .tab-content div {
@@ -72,85 +17,51 @@ ul.nav-tabs {
 }
 
 #code {
-  border-top: 1px solid #e2e2e2;
   font-size: 18px;
 }
 
-#runningWindow {
-  z-index: 10001;
-  width: 500px;
-  height: 260px;
-  border: 2px solid black;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: url('../images/wood.png');
-  text-align: center;
-  font-weight: bold;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
+#runningWindow .modal-body {
+  min-height: 180px;
 }
 
-#docs { display: none; }
-
-#runningWindow h1 {
-  color: white;
-  margin-top: 10px;
-}
-
-#running-image {
-  width: 64px;
+#runningWindowControls {
   display: block;
   margin: auto;
-}
-
-.stop {
-  border: none;
-  display: block;
-  text-indent: -9999px;
-  width: 48px;
-  height: 48px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: url(../images/stop.png);
-}
-
-.stop:focus {
-  outline: 0;
+  height: 180px;
+  width: 360px;
+  position: relative;
 }
 
 #retrostick-1 {
   position: absolute;
-  top: 75px;
-  left: 60px;
+  left: 20px;
+  top: 10px;
 }
 
 .red {
   border: none;
-  display: block;
+  display: inline-block;
   text-indent: -9999px;
   width: 60px;
   height: 60px;
   background: url(../images/red.png);
   position: absolute;
-  top: 110px;
-  right: 140px;
+  top: 60px;
+  left: 220px;
 }
 
-.red:focus, .green:focus {
-  outline: 0;
+.red:active, .green:active {
+  opacity: 0.5;
 }
 
 .green {
   border: none;
-  display: block;
+  display: inline-block;
   text-indent: -9999px;
   width: 60px;
   height: 60px;
   background: url(../images/green.png);
   position: absolute;
-  top: 130px;
-  right: 60px;
+  top: 40px;
+  left: 290px;
 }

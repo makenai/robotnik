@@ -26,11 +26,11 @@ gulp.task('blockly', function () {
     .on('error', console.log);
 });
 
-gulp.task('css', function() {
+gulp.task('bootstrap', function() {
     return gulp.src([
-        './node_modules/bootstrap/dist/css/bootstrap.min.css'
+        './node_modules/bootstrap/dist/**'
     ])
-    .pipe(gulp.dest('./static/vendor/bootstrap/dist/css/'))
+    .pipe(gulp.dest('./static/vendor/bootstrap/dist/'))
     .on('error', console.log);
 });
 
@@ -45,6 +45,12 @@ gulp.task('fonts', function() {
 gulp.task('workshops', function () {
   return gulp.src('./workshops/*.json')
     .pipe(concat_json("bundled-workshops.json"))
+    .pipe(gulp.dest("./static/js/src"));
+});
+
+gulp.task('boards', function () {
+  return gulp.src('./boards/*.json')
+    .pipe(concat_json("bundled-boards.json"))
     .pipe(gulp.dest("./static/js/src"));
 });
 
@@ -90,9 +96,15 @@ gulp.task('bundle', function() {
 gulp.task('watch', function() {
 
   gulp.start('vendor');
+  
   gulp.start('workshops');
   watch(['./workshops/*.json'], function() {
     gulp.start('workshops');
+  });
+
+  gulp.start('boards');
+  watch(['./boards/*.json'], function() {
+    gulp.start('boards');
   });
 
   gulp.start('bundle');
@@ -102,4 +114,4 @@ gulp.task('watch', function() {
 
 });
 
-gulp.task('default', ['icons', 'blockly', 'css', 'fonts', 'workshops', 'vendor', 'bundle']);
+gulp.task('default', ['icons', 'blockly', 'bootstrap', 'fonts', 'boards', 'workshops', 'vendor', 'bundle']);
