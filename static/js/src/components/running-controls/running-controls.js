@@ -1,6 +1,7 @@
 import template from './running-controls.html';
 
 var keycodeMap = {
+  27: 'stop', // escape key
   38: 'up', // Arrow Up
   40: 'down', // Arrow Down
   37: 'left', // Arrow Left
@@ -52,7 +53,13 @@ export default function(commands) {
       window.addEventListener('keyup', function (e) {
         var action = keycodeMap[ e.keyCode ];
         if ($scope.show && action ) {
-          buttonChanged( action, 'up' );
+          if (action == 'stop') {
+            // check for an escape key press and kill the modal if it happens
+            $scope.vm.stop();
+            $scope.$apply();
+          } else {
+            buttonChanged( action, 'up' );
+          }
         }
       });
 
