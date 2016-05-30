@@ -7,3 +7,7 @@
     <a ui-sref="workshop({workshopId: vm.workshop.getId(), exercise: $index + 1})">{{$index + 1}}</a>
   </li>
 </ul>
+
+<div ng-if="vm.exercise.diagram">
+    <img ng-src="{{vm.exercise.diagram}}"/>
+</div>
