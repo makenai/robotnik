@@ -6,6 +6,12 @@ var CodeRunner = require('./lib/codeRunner');
 
 var codeRunner = new CodeRunner();
 
+// the coderunner can emit events which we then broadcast
+// to the web client.
+codeRunner.on('consoledata', function(data){
+    io.sockets.emit('consoledata', data);
+});
+
 app.use(express.static('static'));
 
 io.on('connection', function(socket) {

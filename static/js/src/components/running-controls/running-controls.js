@@ -14,9 +14,25 @@ export default function(commands) {
       this.greenDown = createCommandHandler('green', 'down');
       this.greenUp = createCommandHandler('green', 'up');
       this.joystickMove = buttonChanged;
+      this.runningStatus = "Waiting for connection...";
+
       $scope.$watch('show', function(showModal) {
         $('#runningWindow').modal( showModal ? 'show' : 'hide' );
       });
+
+      // deal with the console data coming in
+      window.socket.on('consoledata', function(data) {
+        if (data.data != undefined) {
+            var consolestr = data.data;
+
+            if (consolestr.search("Initialized") >= 0) {
+                console.log(this);
+                this.runningStatus = "Now running";
+                $scope.$apply();
+            }
+            console.log(consolestr);
+        }
+      }.bind(this));
     },
     link: function(scope,commands) {
       $('#runningWindow').modal({
@@ -40,6 +56,7 @@ export default function(commands) {
   function stop(scope) {
     return function() {
       scope.show = false;
+      this.runningStatus = "Waiting for connection...";
       commands.send( 'control', 'stop' );
     }
   }

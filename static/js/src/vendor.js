@@ -15,3 +15,4 @@ require('angular-bootstrap');
 require('angular-pouchdb');
 
 window.jsBeautify = require('js-beautify').js_beautify;
+
