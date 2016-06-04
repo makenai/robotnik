@@ -22,11 +22,15 @@ export default function($timeout, $stateParams, code, blockly, Workspaces) {
 
       function selectBlocks() {
         this.selected = 'blocks';
+        // trigger a redraw to get everything to render again properly
+        Blockly.fireUiEvent(window, 'resize');
       }
 
       function selectCode() {
         this.selected = 'code';
         this.code = code.generate();
+        // trigger a redraw to get everything to render again properly.
+        Blockly.fireUiEvent(window, 'resize');
       }
 
       function restoreWorkspace(workshopId) {
