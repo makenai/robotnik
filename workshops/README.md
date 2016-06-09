@@ -53,6 +53,7 @@ given in the table below:
 
 | Parameter | Required | Description | Example | Default |
 |-----------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|---------|
+| name | False | The name you want to give to this exercise | Blinking an LED | none |
 | description | False | The description of the exercise that will be presented to the user | In this exercise you'll attempt to make an LED turn on and off by pressing and releasing the red button | none |
 | board_opts | False | An object that contains the johnny-five board options for construction such as for a port etc. This allows an override specifically for an exercise eg switching to bluetooth | {   "port": "/dev/rfcomm0" } | none |
 | components | True | A string array of component names to bring into the workspace for this exercise | [ "led13", "leftMotor", "lightSensor"] | none |

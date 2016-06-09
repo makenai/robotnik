@@ -79,6 +79,7 @@
     ],
     "exercises": [
         {
+            "name": "Blink an LED",
             "description": "First, try to make the little Blue LED (an actuator) blink when you push a button. Can you change the speed of the blinking? Can you stop it when you release the button?",
             "board_opts": {
                 "port": "/dev/cu.wchusbserial1410"

@@ -31,6 +31,10 @@
     color: #337AB7;
 }
 
+exercise h2 {
+    font-size: 2rem;
+}
+
 #runningWindow .modal-body {
   min-height: 180px;
 }
