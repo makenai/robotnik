@@ -50,7 +50,14 @@ export default function(commands) {
       }.bind(this));
 
       // Keyboard Bindings
+      //
+      this.lastEvent;
+      this.heldKeys = {};
+
       window.addEventListener('keyup', function (e) {
+        this.lastEvent = null;
+        delete this.heldKeys[e.keyCode];
+
         var action = keycodeMap[ e.keyCode ];
         if ($scope.show && action ) {
           if (action == 'stop') {
@@ -61,14 +68,19 @@ export default function(commands) {
             buttonChanged( action, 'up' );
           }
         }
-      });
+      }.bind(this));
 
       window.addEventListener('keydown', function (e) {
+        if (this.lastEvent && this.lastEvent.keyCode == e.keyCode) {
+              return;
+        }
+        this.lastEvent = e;
+        this.heldKeys[e.keyCode] = true;
         var action = keycodeMap[ e.keyCode ];
         if ($scope.show && action ) {
           buttonChanged( action, 'down' );
         }
-      });
+      }.bind(this));
 
     },
     link: function(scope,commands) {

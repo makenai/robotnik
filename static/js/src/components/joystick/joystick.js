@@ -7,7 +7,8 @@ export default function() {
     link: function(scope, element) {
       let joystick = new RetroJoyStick({
         container: element[0],
-        position: 'custom'
+        position: 'custom',
+        snapping: true
       });
 
       var past_directions = {
@@ -17,9 +18,22 @@ export default function() {
         right: false
       };
 
+      this.lastEvent;
+      this.heldDirection = {};
+
       var move = function(direction, state) {
+        if (state == "down") {
+            if (this.lastEvent && this.lastEvent == direction) {
+                return;
+            }
+            this.lastEvent = direction;
+            this.heldDirection[direction] = true;
+        } else {
+            this.lastEvent = null;
+            delete this.heldDirection[direction];
+        }
         scope.onMove({direction, state});
-      }
+      }.bind(this);
 
       joystick.on('change', function(e) {
         scope.$apply(function() {
