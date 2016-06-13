@@ -67,6 +67,7 @@ export default function(Workspaces) {
     function reloadWorkspace(data) {
         let xml = Blockly.Xml.textToDom(data);
         Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
+
     }
 
 };
