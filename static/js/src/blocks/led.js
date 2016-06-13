@@ -10,6 +10,11 @@ var ledMethods = [
         ['stop', 'stop'],
 ];
 
+var mutatorStateFields = {
+    "blink": [ "ledblinkspeed" ],
+    "fade" : [ "ledfadelevel", "ledfadems" ],
+}
+
 export default function led(opts) {
     // initialises the LED object
 
@@ -47,18 +52,16 @@ led.prototype.blocks = function() {
                 var container = document.createElement('mutation');
                 var ledstate = this.getFieldValue('ledstate');
                 container.setAttribute('ledstate', ledstate);
-                if (this.getFieldValue('ledblinkspeed')) {
-                    container.setAttribute('ledblinkspeed',
-                            this.getFieldValue('ledblinkspeed'));
-                }
-                if (this.getFieldValue('ledfadelevel')) {
-                    container.setAttribute('ledfadelevel',
-                            this.getFieldValue('ledfadelevel'));
-                    container.setAttribute('ledfadems',
-                            this.getFieldValue('ledfadems'));
-                }
-                return container;
 
+                // check if there's special fields we need to save based
+                // on the state.
+                if (mutatorStateFields[ledstate]) {
+                    mutatorStateFields[ledstate].forEach(field => {
+                        container.setAttribute(field, this.getFieldValue(field));
+                    });
+                }
+
+                return container;
             },
             domToMutation: function(xmlElement) {
                 // restore the state of the block.
@@ -66,11 +69,10 @@ led.prototype.blocks = function() {
                 // you'll get and then build the object.
                 let options = {};
                 options.state = xmlElement.getAttribute('ledstate');
-                if (options.state == "blink") {
-                    options.ledblinkspeed = xmlElement.getAttribute('ledblinkspeed');
-                } else if (options.state == "fade") {
-                    options.ledfadelevel = xmlElement.getAttribute('ledfadelevel');
-                    options.ledfadems = xmlElement.getAttribute('ledfadems');
+                if (mutatorStateFields[options.state]) {
+                    mutatorStateFields[options.state].forEach(field => {
+                        options[field] = xmlElement.getAttribute(field);
+                    });
                 }
 
                 this.shapechange_(options);
