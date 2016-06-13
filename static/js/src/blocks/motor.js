@@ -9,6 +9,10 @@ var motorMethods = [
     ['stops', 'stop'],
 ];
 
+var mutatorStateFields = {
+    "forward": [ "motorspeed" ],
+    "reverse": [ "motorspeed" ],
+};
 
 export default function motor(opts) {
     // initialises the motor object
@@ -43,12 +47,47 @@ motor.prototype.blocks = function() {
                 this.setNextStatement(true);
                 this.setPreviousStatement(true);
             },
+            mutationToDom: function() {
+                var container = document.createElement('mutation');
+                var motorstate = this.getFieldValue('motorstate');
+                container.setAttribute('motorstate', motorstate);
+
+                // check if there's special fields we need to save based
+                // on the state.
+                if (mutatorStateFields[motorstate]) {
+                    mutatorStateFields[motorstate].forEach(field => {
+                        container.setAttribute(field, this.getFieldValue(field));
+                    });
+                }
+
+                return container;
+            },
+            domToMutation: function(xmlElement) {
+                // restore the state of the block.
+                // Determine state which will determine the other fields
+                // you'll get and then build the object.
+                let options = {};
+                options.state = xmlElement.getAttribute('motorstate');
+                if (mutatorStateFields[options.state]) {
+                    mutatorStateFields[options.state].forEach(field => {
+                        options[field] = xmlElement.getAttribute(field);
+                    });
+                }
+
+                this.shapechange_(options);
+            },
             onchange: function(e) {
-                // this happens when the interface changes.
+                this.shapechange_();
+            },
+            shapechange_: function(options) {
+                // change the structure of the block depending on the type
+                // of method being called.
+
+                let opts = options || {};
+                let state = opts.state || this.getFieldValue('motorstate');
 
                 // update block with speed values if needed.
-                if (this.getFieldValue('motorstate') == "forward" ||
-                        this.getFieldValue('motorstate') == "reverse") {
+                if (state == "forward" || state == "reverse") {
                     // use the input list to determine how many controllable
                     // inputs there are. 1 means it's just the dropdown
                     // 2 or more means there are other fields added.
