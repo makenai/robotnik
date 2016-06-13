@@ -33,7 +33,7 @@ motor.prototype.blocks = function() {
     return {
         motor: {
             init: function() {
-                this.setColour(60);
+                this.setColour(65);
                 this.appendDummyInput()
                     .appendField('The')
                     .appendField(new Blockly.FieldDropdown(motorSelector), 'motorobject')
@@ -63,10 +63,11 @@ motor.prototype.blocks = function() {
                     }
 
                     if (addinput) {
-                        // add the blink items to the block
+                        // add the speed items to the block
+                        this.setInputsInline(false);
                         this.appendDummyInput("motorspeedcontainer")
-                            .appendField('and set speed to')
-                            .appendField(new Blockly.FieldTextInput('150'), 'motorspeed')
+                            .appendField('and set the motor\'s speed to')
+                            .appendField(new Blockly.FieldTextInput('200'), 'motorspeed')
                     } else {
                         // item already exists so do some range checks
                         let speed = parseInt(this.getFieldValue('motorspeed'));

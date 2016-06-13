@@ -51,7 +51,7 @@ servo.prototype.blocks = function() {
     let blockdefs = {
         continuous: {
             init: function() {
-                this.setColour(60);
+                this.setColour(65);
                 this.appendDummyInput()
                     .appendField('The')
                     .appendField(new Blockly.FieldDropdown(servoSelector.continuous), 'servoobject')
@@ -88,12 +88,12 @@ servo.prototype.blocks = function() {
                         this.appendDummyInput("MOVE")
                             .appendField(' ')
                             .appendField(new Blockly.FieldTextInput('90'), 'servoposition')
-                            .appendField('degrees');
+                            .appendField('°');
                     } else {
                         // the item already exists, just do a quick range check.
                         let degrees = parseInt(this.getFieldValue('servoposition'));
                         if (degrees > 180 || degrees < 0) {
-                            this.setWarningText("Position value must be between 0-180 degrees");
+                            this.setWarningText("Position value must be between 0-180°");
                         } else if (isNaN(degrees)) {
                             this.setWarningText("Position value needs to be a number");
                         } else {

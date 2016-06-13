@@ -33,7 +33,7 @@ led.prototype.blocks = function() {
     return  {
         led: {
             init: function() {
-                this.setColour(120);
+                this.setColour(65);
                 this.appendDummyInput()
                     .appendField('LED')
                     .appendField(new Blockly.FieldDropdown(ledSelector), 'ledobject')
