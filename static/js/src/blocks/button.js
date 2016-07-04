@@ -33,7 +33,7 @@ button.prototype.blocks = function() {
     return {
         button: {
             init: function() {
-                this.setColour(60);
+                this.setColour(260);
                 this.appendDummyInput()
                     .appendField('When the')
                     .appendField(new Blockly.FieldDropdown(buttonSelector), 'buttonobject')

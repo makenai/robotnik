@@ -10,6 +10,11 @@ var ledMethods = [
         ['stop', 'stop'],
 ];
 
+var mutatorStateFields = {
+    "blink": [ "ledblinkspeed" ],
+    "fade" : [ "ledfadelevel", "ledfadems" ],
+}
+
 export default function led(opts) {
     // initialises the LED object
 
@@ -33,7 +38,7 @@ led.prototype.blocks = function() {
     return  {
         led: {
             init: function() {
-                this.setColour(120);
+                this.setColour(65);
                 this.appendDummyInput()
                     .appendField('LED')
                     .appendField(new Blockly.FieldDropdown(ledSelector), 'ledobject')
@@ -43,9 +48,46 @@ led.prototype.blocks = function() {
                 this.setNextStatement(true);
                 this.setPreviousStatement(true);
             },
+            mutationToDom: function() {
+                var container = document.createElement('mutation');
+                var ledstate = this.getFieldValue('ledstate');
+                container.setAttribute('ledstate', ledstate);
+
+                // check if there's special fields we need to save based
+                // on the state.
+                if (mutatorStateFields[ledstate]) {
+                    mutatorStateFields[ledstate].forEach(field => {
+                        container.setAttribute(field, this.getFieldValue(field));
+                    });
+                }
+
+                return container;
+            },
+            domToMutation: function(xmlElement) {
+                // restore the state of the block.
+                // Determine state which will determine the other fields
+                // you'll get and then build the object.
+                let options = {};
+                options.state = xmlElement.getAttribute('ledstate');
+                if (mutatorStateFields[options.state]) {
+                    mutatorStateFields[options.state].forEach(field => {
+                        options[field] = xmlElement.getAttribute(field);
+                    });
+                }
+
+                this.shapechange_(options);
+            },
             onchange: function(e) {
-                // this happens when the interface changes.
-                if (this.getFieldValue('ledstate') == "blink") {
+                this.shapechange_();
+            },
+            shapechange_: function(options) {
+                // change the structure of the block depending on the type
+                // of method being called.
+
+                let opts = options || {};
+                let state = opts.state || this.getFieldValue('ledstate');
+
+                if (state == "blink") {
                     // use the input list to determine how many controllable
                     // inputs there are. 1 means it's just the dropdown
                     // 2 or more means there are other fields added.
@@ -61,13 +103,14 @@ led.prototype.blocks = function() {
 
                     if (addinput) {
                         // add the blink items to the block
+
                         this.appendDummyInput("ledblinkcontainer")
                             .appendField('every')
                             .appendField(new Blockly.FieldTextInput('1000'), 'ledblinkspeed')
                             .appendField('milliseconds');
                     }
 
-                } else if (this.getFieldValue('ledstate') == "fade") {
+                } else if (state == "fade") {
                     // now we need to add the fields for the fade.
 
                     let addinput = false;
@@ -84,11 +127,15 @@ led.prototype.blocks = function() {
 
                     // now add the input but only if we need to.
                     if (addinput) {
+
+                        let level = opts.ledfadelevel || 100;
+                        let ms = opts.ledfadems || 500;
+
                         this.appendDummyInput("ledfadecontainer")
                             .appendField("to")
-                            .appendField(new Blockly.FieldTextInput('100'), 'ledfadelevel')
+                            .appendField(new Blockly.FieldTextInput(level), 'ledfadelevel')
                             .appendField("over")
-                            .appendField(new Blockly.FieldTextInput('500'), 'ledfadems')
+                            .appendField(new Blockly.FieldTextInput(ms), 'ledfadems')
                             .appendField("ms");
                     }
 

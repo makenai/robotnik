@@ -20,6 +20,21 @@
   font-size: 18px;
 }
 
+#exercises {
+    margin: 0;
+}
+
+.exercise-instruction {
+    margin-top: 1.3rem;
+    margin-bottom: 0.3rem;
+    font-size: 1.3rem;
+    color: #337AB7;
+}
+
+exercise h2 {
+    font-size: 2rem;
+}
+
 #runningWindow .modal-body {
   min-height: 180px;
 }

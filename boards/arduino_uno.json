@@ -3,10 +3,12 @@
   "name": "Arduino Uno",
   "default": true,
   "code": {
-    "before": [
+    "requires": [
       "var five = require(\"johnny-five\");",
-      "var board = new five.Board();",
-      "var controller = require('robotnik-controls');",
+      "var controller = require('robotnik-controls');"
+    ],
+    "boardInit": "var board = new five.Board(opts);",
+    "before": [
       "",
       "board.on(\"ready\", function() {"
     ],

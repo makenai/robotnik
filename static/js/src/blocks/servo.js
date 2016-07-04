@@ -14,6 +14,13 @@ var stdServoMethods = [
     ['moves to the centre', 'center']
 ];
 
+var stdMutatorStateFields = {
+    "to": ["servoposition"]
+};
+
+var crMutatorStateFields = {
+
+}
 
 export default function servo(opts) {
     // initialises the LED object
@@ -51,7 +58,7 @@ servo.prototype.blocks = function() {
     let blockdefs = {
         continuous: {
             init: function() {
-                this.setColour(60);
+                this.setColour(65);
                 this.appendDummyInput()
                     .appendField('The')
                     .appendField(new Blockly.FieldDropdown(servoSelector.continuous), 'servoobject')
@@ -77,9 +84,46 @@ servo.prototype.blocks = function() {
                 this.setNextStatement(true);
                 this.setPreviousStatement(true);
             },
+            mutationToDom: function() {
+                var container = document.createElement('mutation');
+                var servostate = this.getFieldValue('servostate');
+                container.setAttribute('servostate', servostate);
+
+                // check if there's special fields we need to save based
+                // on the state.
+                if (stdMutatorStateFields[servostate]) {
+                    stdMutatorStateFields[servostate].forEach(field => {
+                        container.setAttribute(field, this.getFieldValue(field));
+                    });
+                }
+
+                return container;
+            },
+            domToMutation: function(xmlElement) {
+                // restore the state of the block.
+                // Determine state which will determine the other fields
+                // you'll get and then build the object.
+                let options = {};
+                options.state = xmlElement.getAttribute('servostate');
+                if (stdMutatorStateFields[options.state]) {
+                    stdMutatorStateFields[options.state].forEach(field => {
+                        options[field] = xmlElement.getAttribute(field);
+                    });
+                }
+
+                this.shapechange_(options);
+            },
             onchange: function(e) {
+                this.shapechange_();
+            },
+            shapechange_: function(options) {
+                // change the structure of the block depending on the type
+                // of method being called.
+
+                let opts = options || {};
+                let state = opts.state || this.getFieldValue('servostate');
                 // this happens when the interface changes.
-                if (this.getFieldValue('servostate') == "to") {
+                if (state == "to") {
                     // use the input list to determine how many controllable
                     // inputs there are. 1 means it's just the dropdown
                     // 2 or more means there are other fields added.
@@ -88,12 +132,12 @@ servo.prototype.blocks = function() {
                         this.appendDummyInput("MOVE")
                             .appendField(' ')
                             .appendField(new Blockly.FieldTextInput('90'), 'servoposition')
-                            .appendField('degrees');
+                            .appendField('°');
                     } else {
                         // the item already exists, just do a quick range check.
                         let degrees = parseInt(this.getFieldValue('servoposition'));
                         if (degrees > 180 || degrees < 0) {
-                            this.setWarningText("Position value must be between 0-180 degrees");
+                            this.setWarningText("Position value must be between 0-180°");
                         } else if (isNaN(degrees)) {
                             this.setWarningText("Position value needs to be a number");
                         } else {

@@ -40,7 +40,7 @@ sensor.prototype.blocks = function() {
     return {
         thermometer: {
             init: function() {
-                this.setColour(60);
+                this.setColour(260);
                 this.appendDummyInput()
                     .appendField('When the')
                     .appendField(new Blockly.FieldDropdown(componentSelector), 'temperatureobject')

@@ -6,7 +6,7 @@ function init() {
 
     Blockly.Blocks['console_log_value'] = {
         init: function() {
-            this.setColour(320);
+            this.setColour(290);
             this.appendValueInput("consolevalue")
                 .appendField('console.log');
             this.setNextStatement(true);
@@ -16,7 +16,7 @@ function init() {
 
     Blockly.Blocks['while_button'] = {
         init: function() {
-            this.setColour(180);
+            this.setColour(210);
             this.appendDummyInput()
                 .appendField('while')
                 .appendField(new Blockly.FieldDropdown([
@@ -37,7 +37,7 @@ function init() {
 
     Blockly.Blocks['if_distance'] = {
         init: function() {
-            this.setColour(280);
+            this.setColour(210);
             this.appendDummyInput()
                 .appendField('when')
                 .appendField(new Blockly.FieldTextInput('15'), 'DISTANCE')

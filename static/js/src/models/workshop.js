@@ -4,6 +4,8 @@
 import _ from 'lodash';
 
 // get the component block and generator definitions.
+
+// TODO wrap this into a better importer
 import button from '../blocks/button.js';
 import led from '../blocks/led.js';
 import motor from '../blocks/motor.js';
@@ -201,3 +203,18 @@ Workshop.prototype.getComponentsFromClass = function(classtype) {
 
     return _.filter(this.getComponents(), {class: classtype});
 };
+
+Workshop.prototype.getBoardConfig = function() {
+    // gets a board config from the board_opts object from the exercise
+
+    let boardopts = "";
+
+    // grab from the exercise if present, from the workshop definition if not
+    if (this.data.exercises[this.currentExercise].board_opts) {
+        boardopts = this.data.exercises[this.currentExercise].board_opts;
+    } else if (this.data.board_opts) {
+        boardopts = this.data.board_opts;
+    }
+
+    return (boardopts);
+}

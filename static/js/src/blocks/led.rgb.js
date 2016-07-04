@@ -11,6 +11,12 @@ var ledMethods = [
         ['stops', 'stop'],
 ];
 
+var mutatorStateFields = {
+        "strobe" : [ "ledstrobespeed" ],
+        "intensity" : [ "ledintensitylevel" ],
+        "color": [ "ledcolor" ],
+};
+
 export default function ledrgb(opts) {
     // initialises the LED object
 
@@ -44,7 +50,39 @@ ledrgb.prototype.blocks = function() {
                 this.setNextStatement(true);
                 this.setPreviousStatement(true);
             },
+            mutationToDom: function() {
+                var container = document.createElement('mutation');
+                var ledstate = this.getFieldValue('ledstate');
+                container.setAttribute('ledstate', ledstate);
+
+                // check if there's special fields we need to save based
+                // on the state.
+                if (mutatorStateFields[ledstate]) {
+                    mutatorStateFields[ledstate].forEach(field => {
+                        container.setAttribute(field, this.getFieldValue(field));
+                    });
+                }
+
+                return container;
+            },
+            domToMutation: function(xmlElement) {
+                // restore the state of the block.
+                // Determine state which will determine the other fields
+                // you'll get and then build the object.
+                let options = {};
+                options.state = xmlElement.getAttribute('ledstate');
+                if (mutatorStateFields[options.state]) {
+                    mutatorStateFields[options.state].forEach(field => {
+                        options[field] = xmlElement.getAttribute(field);
+                    });
+                }
+
+                this.shapechange_(options);
+            },
             onchange: function(e) {
+                this.shapechange_();
+            },
+            shapechange_: function(options) {
                 // this happens when the interface changes.
                 if (this.getFieldValue('ledstate') == "strobe") {
                     // use the input list to determine how many controllable

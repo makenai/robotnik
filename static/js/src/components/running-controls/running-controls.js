@@ -1,6 +1,7 @@
 import template from './running-controls.html';
 
 var keycodeMap = {
+  27: 'stop', // escape key
   38: 'up', // Arrow Up
   40: 'down', // Arrow Down
   37: 'left', // Arrow Left
@@ -41,7 +42,6 @@ export default function(commands) {
             var consolestr = data.data;
 
             if (consolestr.search("Initialized") >= 0) {
-                console.log(this);
                 this.runningStatus = "Now running";
                 $scope.$apply();
             }
@@ -50,19 +50,37 @@ export default function(commands) {
       }.bind(this));
 
       // Keyboard Bindings
+      //
+      this.lastEvent;
+      this.heldKeys = {};
+
       window.addEventListener('keyup', function (e) {
+        this.lastEvent = null;
+        delete this.heldKeys[e.keyCode];
+
         var action = keycodeMap[ e.keyCode ];
         if ($scope.show && action ) {
-          buttonChanged( action, 'up' );
+          if (action == 'stop') {
+            // check for an escape key press and kill the modal if it happens
+            $scope.vm.stop();
+            $scope.$apply();
+          } else {
+            buttonChanged( action, 'up' );
+          }
         }
-      });
+      }.bind(this));
 
       window.addEventListener('keydown', function (e) {
+        if (this.lastEvent && this.lastEvent.keyCode == e.keyCode) {
+              return;
+        }
+        this.lastEvent = e;
+        this.heldKeys[e.keyCode] = true;
         var action = keycodeMap[ e.keyCode ];
         if ($scope.show && action ) {
           buttonChanged( action, 'down' );
         }
-      });
+      }.bind(this));
 
     },
     link: function(scope,commands) {
